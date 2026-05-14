@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Smartsheet Monetization & Billing Brief - Kelvin Zee</title>
+<meta name="description" content="A measured, interactive strategy brief for Smartsheet's Principal Product Manager, Monetization & Billing role." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ["Montserrat", "ui-sans-serif", "system-ui", "sans-serif"],
+          serif: ["Montserrat", "ui-sans-serif", "system-ui", "sans-serif"],
+          mono: ["IBM Plex Mono", "ui-monospace", "monospace"]
+        }
+      }
+    }
+  };
+</script>
+
+<style>
+  :root {
+    --color-bg: #F8F7F5;
+    --color-surface: #ffffff;
+    --color-surface-soft: #EEF2F7;
+    --color-text: #00184D;
+    --color-body: #4B4949;
+    --color-muted: #4B4949;
+    --color-subtle: #73716E;
+    --color-border: #D7D5D0;
+    --color-accent: #1957DE;
+    --color-accent-strong: #00184D;
+    --color-accent-soft: #DDE7FF;
+    --color-warning: #9A6500;
+    --color-warning-soft: #FFF3D4;
+    --color-positive: #009689;
+    --color-positive-soft: #DDF4F1;
+    --font-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+    --page-max: 1180px;
+    --radius: 8px;
+    --shadow-soft: 0 18px 48px rgba(0, 24, 77, 0.08);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  button, input, select { font: inherit; }
+  button { cursor: pointer; }
+  a { color: inherit; }
+
+  .page { min-height: 100vh; background: var(--color-bg); color: var(--color-text); }
+  .wrap { max-width: var(--page-max); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+  .section { padding: 88px 0; border-top: 1px solid var(--color-border); }
+  .hero { padding: 88px 0 96px; border-top: 0; }
+  .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); box-shadow: var(--shadow-soft); }
+  .flat-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); }
+  .soft-card { background: var(--color-surface-soft); border: 1px solid var(--color-border); border-radius: var(--radius); }
+  .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-muted); }
+  .mono { font-family: var(--font-mono); }
+  .serif { font-family: var(--font-display); font-weight: 700; }
+  .muted { color: var(--color-muted); }
+  .subtle { color: var(--color-subtle); }
+  .accent { color: var(--color-accent-strong); }
+  .hairline { height: 1px; background: var(--color-border); }
+  .metric-fill { transition: width 650ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .skip-link {
+    position: absolute; left: 16px; top: -80px; z-index: 50;
+    background: var(--color-text); color: var(--color-bg); padding: 10px 14px; border-radius: 6px;
+  }
+  .skip-link:focus { top: 16px; }
+  .focus-ring:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .metric-fill { transition: none; }
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  @media print {
+    body { background: #ffffff; color: #111111; }
+    .page { background: #ffffff; }
+    .section, .hero { padding: 32px 0; }
+    .card, .flat-card, .soft-card { box-shadow: none; break-inside: avoid; }
+    .no-print { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to brief</a>
+<div id="root">
+  <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',ui-monospace,monospace;color:#1957DE;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;background:#F8F7F5;">
+    Preparing interactive strategy brief
+  </div>
+</div>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel" data-presets="react">
+const { useEffect, useMemo, useState } = React;
+
+/* ============================================================
+   TEMPLATE CONTRACT
+   Codex may customize values and approved variants during the
+   gated brief workflow. Codex may not skip, merge, or reorder
+   Final Pass steps without explicit approval.
+   ============================================================ */
+
+const BRIEF_META = {
+  company: "Smartsheet",
+  roleTitle: "Principal Product Manager - Monetization & Billing",
+  reader: "recruiter and hiring manager",
+  stage: "Cold application / pre-screen",
+  preparedBy: "Kelvin Zee",
+  preparedFor: "Smartsheet",
+  preparedDate: "May 2026",
+  sourcePosture: "Outside-in public research plus resume-backed experience from billing, subscription packaging, and lifecycle platforms.",
+  memoPosture: "This is a measured strategy memo, not a pitch. I am high confidence that the role is about monetization architecture, lower confidence on the right intervention until internal defect, usage, contract, and finance data are visible.",
+  githubPagesReady: true
+};
+
+const DESIGN_TOKENS = {
+  posture: "Complement",
+  mode: "light",
+  colors: {
+    bg: "#F8F7F5",
+    surface: "#ffffff",
+    surfaceSoft: "#EEF2F7",
+    text: "#00184D",
+    muted: "#4B4949",
+    subtle: "#73716E",
+    border: "#D7D5D0",
+    accent: "#1957DE",
+    accentStrong: "#00184D",
+    accentSoft: "#DDE7FF",
+    warning: "#9A6500",
+    warningSoft: "#FFF3D4",
+    positive: "#009689",
+    positiveSoft: "#DDF4F1"
+  },
+  typography: {
+    body: "'Montserrat', ui-sans-serif, system-ui, sans-serif",
+    display: "'Montserrat', ui-sans-serif, system-ui, sans-serif",
+    mono: "'IBM Plex Mono', ui-monospace, monospace"
+  },
+  surfaces: "Light warm-gray editorial surfaces with restrained Smartsheet-blue diagnostic accents.",
+  interaction: "Diagnostic model with visible axes, caveats, metric bars, and differentiated outcomes."
+};
+
+const SECTION_PLAN = [
+  { id: "00", label: "Design Token Application", public: false, variant: "token-first-neutral", allowedVariants: ["token-first-neutral"], analyticalJob: "Apply the company-specific design token spec before content drafting." },
+  { id: "01", label: "Hero / TLDR", public: true, variant: "hero-navigator", allowedVariants: ["hero-navigator", "hero-executive-summary"], analyticalJob: "State the diagnosis, the leak, the whitespace, and how to read the brief." },
+  { id: "02", label: "The Setup", public: true, variant: "three-force-cards", allowedVariants: ["three-force-cards", "problem-stack", "market-signals"], analyticalJob: "Show the three forces that make the role's problem worth a strategic brief." },
+  { id: "03", label: "The Analogy", public: true, variant: "interactive-phase-ribbon", allowedVariants: ["interactive-phase-ribbon", "before-after-slider", "transfer-breaks-panel"], analyticalJob: "Use one external transition carefully, naming where it transfers and where it breaks." },
+  { id: "04", label: "Current Architecture", public: true, variant: "architecture-map", allowedVariants: ["architecture-map", "capability-stack", "workflow-map"], analyticalJob: "Explain the company's current product, pricing, workflow, or operating architecture." },
+  { id: "05", label: "The Field", public: true, variant: "competitive-matrix", allowedVariants: ["competitive-matrix", "market-map", "pressure-table"], analyticalJob: "Compare external market moves without flattening the strategic differences." },
+  { id: "06", label: "Customer / Buyer Shift", public: true, variant: "journey-shift", allowedVariants: ["journey-shift", "buyer-evolution", "behavior-change"], analyticalJob: "Identify who changed, what they now expect, and why the old product logic may leak." },
+  { id: "07", label: "Segments", public: true, variant: "segment-map", allowedVariants: ["segment-map", "stakeholder-grid", "lifecycle-quartiles"], analyticalJob: "Separate customer or stakeholder groups so the recommendation does not treat the market as one blob." },
+  { id: "08", label: "Hypotheses", public: true, variant: "four-lens-hypotheses", allowedVariants: ["four-lens-hypotheses"], analyticalJob: "Frame four hypotheses with why true, why wrong, what resolves, and confidence." },
+  { id: "09", label: "Interactive Component", public: true, variant: "diagnostic-model", allowedVariants: ["diagnostic-model", "journey-simulator", "tradeoff-calculator"], analyticalJob: "Let the reader manipulate meaningful axes and see differentiated tradeoffs." },
+  { id: "10", label: "Framework I Would Validate", public: true, variant: "validation-framework", allowedVariants: ["validation-framework", "operating-model", "decision-gates"], analyticalJob: "Offer an illustrative framework with explicit caveats and validation gates." },
+  { id: "11", label: "Validation Plan", public: true, variant: "ninety-day-plan", allowedVariants: ["ninety-day-plan", "test-roadmap", "learning-agenda"], analyticalJob: "Show how to learn responsibly in 30, 60, and 90 days, including what not to do." },
+  { id: "12", label: "Open Questions", public: true, variant: "question-groups", allowedVariants: ["question-groups", "risk-register", "unknowns-map"], analyticalJob: "Ask questions that internal data could answer and that would change the read." },
+  { id: "13", label: "Why This Profile", public: true, variant: "career-arc-bridge", allowedVariants: ["career-arc-bridge"], analyticalJob: "Map Kelvin's resume-backed experience to the role and name what not to claim." }
+];
+
+const EXPERIENCE_MIRRORS = [
+  {
+    id: "prime_lifecycle",
+    label: "Prime lifecycle and CLV",
+    sourceStatus: "resume_ready",
+    sourceLabel: "current resume and story bank",
+    useWhen: "The brief discusses activation, engagement, retention, benefit discovery, personalization, or CLV.",
+    sentence: "A useful mirror is Prime: retention risk showed up when members failed to discover benefits that made the subscription feel worth renewing."
+  },
+  {
+    id: "billing_trust",
+    label: "Billing and Benefits as product",
+    sourceStatus: "resume_ready",
+    sourceLabel: "current resume and story bank",
+    useWhen: "The brief discusses trust, comprehension, payments, support demand, or operational surfaces.",
+    sentence: "A useful mirror is T-Mobile Billing and Benefits: a system could be technically accurate and still fail the customer trust test."
+  },
+  {
+    id: "tmobile_one",
+    label: "T-Mobile ONE pricing simplification",
+    sourceStatus: "resume_ready",
+    sourceLabel: "current resume and shared fact ledger",
+    useWhen: "The brief discusses packaging, rate-plan simplification, legal/accounting alignment, or customer promise clarity.",
+    sentence: "A useful mirror is T-Mobile ONE: the customer-facing promise only worked if legal, accounting, care, retail, and billing could carry it."
+  },
+  {
+    id: "jump_partner_economics",
+    label: "JUMP device programs and partner economics",
+    sourceStatus: "story_bank_candidate",
+    sourceLabel: "story bank and shared fact ledger",
+    useWhen: "The brief discusses add-on attachment, insurance, partner economics, supply chain, or vendor accountability.",
+    sentence: "A useful mirror is JUMP: attachment, protection, upgrade clarity, vendor economics, and customer promise had to move together."
+  }
+];
+
+const HERO_STATS = [
+  { value: "$1.12B", label: "FY25 total revenue", source: "Smartsheet FY25 company snapshot" },
+  { value: "40M", label: "Active users", source: "Smartsheet FY25 company snapshot" },
+  { value: "70%", label: "More seats in USM transitions", source: "Smartsheet customer loyalty benefit, 2025" },
+  { value: "3M", label: "Active projects cited at AI launch", source: "Smartsheet Intelligent Work Management, 2025" }
+];
+
+const READ_PATHS = [
+  { time: "3-minute read", title: "Fit and thesis", body: "Read Sections 01, 02, 08, and 13 for the role fit, core diagnosis, hypotheses, and profile bridge." },
+  { time: "15-minute read", title: "Systems argument", body: "Add Sections 04, 06, 09, 10, and 11 for the monetization architecture map, buyer/admin shift, diagnostic, framework, and validation path." },
+  { time: "Full brief", title: "Operating read", body: "Read end to end for the T-Mobile analogy, model field, segment map, open questions, caveats, and source posture." }
+];
+
+const SETUP_CARDS = [
+  {
+    tag: "The Business Context",
+    head: "Smartsheet has crossed the scale where monetization systems become operating infrastructure, not back-office plumbing.",
+    body: "Smartsheet's FY25 company snapshot cites $1.12B in total revenue, 40M active users, 85% Fortune 500 usage, and 3,237 employees. After the $8.4B take-private close in January 2025, the public signals point toward operating discipline: new CEO and CFO announcements both connect growth, AI investment, and financial strength.",
+    stat: "Sources: Smartsheet FY25 company snapshot; SEC closing release; CEO/CFO announcements."
+  },
+  {
+    tag: "The Monetization Context",
+    head: "The public pricing surface already shows why entitlement, admin control, and billing explanation matter.",
+    body: "Smartsheet's public packages span Pro, Business, Enterprise, and Advanced Work Management, while the User Subscription Model adds provisional membership, reconciliation, and true-up mechanics. The customer loyalty update says thousands of transitioned customers averaged 70% more seats with less than a 10% user subscription fee increase, and Admin approval now defaults unapproved Provisional Members back to free seats.",
+    stat: "Sources: pricing page; USM update; loyalty benefit; Admin approval update."
+  },
+  {
+    tag: "The Product Context",
+    head: "AI and advanced work features make monetization architecture a product problem, not just a finance workflow.",
+    body: "Smartsheet's Intelligent Work Management announcement cited almost 3M active projects and introduced Smart Agents, Scenario Planning, and enterprise AI features. The pricing page already exposes AI tools and a Claude integration as plan-surface features, which means future monetization work will likely touch usage, permissions, provisioning, support, and customer-value explanation.",
+    stat: "Sources: Intelligent Work Management announcement; Smartsheet AI page; pricing page."
+  }
+];
+
+const ANALOGY_PHASES = [
+  {
+    label: "Contract-era complexity",
+    pivot: false,
+    buyer: "Customers were choosing among plan rules, taxes, device terms, promotions, and upgrade paths that often made the advertised price feel easier than the lived subscription.",
+    economics: "The business still needed accurate tax, accounting, finance, device-financing, care, retail, and billing treatment behind the scenes.",
+    lesson: "Complexity can be valid inside the system and still become a trust problem when the customer has to decode it."
+  },
+  {
+    label: "Simpler customer promise",
+    pivot: true,
+    buyer: "T-Mobile ONE moved the promise toward tax-inclusive, unlimited, upgrade-friendly subscription packaging that a customer and frontline team could explain more cleanly.",
+    economics: "The simpler promise only worked if legal language, accounting treatment, finance modeling, billing systems, retail explanation, and care support aligned.",
+    lesson: "A package is not simple because the marketing line is simple. It is simple when every downstream system can carry the same promise."
+  },
+  {
+    label: "Enterprise translation",
+    pivot: false,
+    buyer: "Retail, care, digital, and billing all had to explain the same subscription promise without creating a different version of the truth in each channel.",
+    economics: "Finance, accounting, legal, customer delivery, and billing still needed precision for taxes, proration, discounts, device charges, and exceptions.",
+    lesson: "The product work was translating a customer promise into operating rules, not pretending the operating rules disappeared."
+  },
+  {
+    label: "First-bill trust gap",
+    pivot: false,
+    buyer: "Even after rate-plan simplification, customers could still lose confidence when the first bill or a plan-change bill showed correct charges they did not understand.",
+    economics: "Technically accurate billing did not automatically reduce care demand, payment friction, or cancellation risk if customers could not see what changed and why.",
+    lesson: "Billing is where the customer tests whether the company understands the promise it already made."
+  },
+  {
+    label: "Billing as product",
+    pivot: false,
+    buyer: "Billing & Benefits reframed the bill as a comprehension, self-service, and trust surface across web, app, and paper bill.",
+    economics: "The operating loop moved toward payment completion, recurring payment setup, billing-related care-call reduction, satisfaction, and CLV.",
+    lesson: "The customer-facing surface became a control point for trust, not just the final display of backend truth."
+  },
+  {
+    label: "Measurement loop",
+    pivot: false,
+    buyer: "The customer experience improved when the system helped people understand what they owed, what changed, what benefits they had, and what action to take next.",
+    economics: "The work was associated with Billing & Benefits becoming T-Mobile's #1 digital property, lower billing-related care calls, and stronger payment and CLV outcomes.",
+    lesson: "The durable move was not a single billing redesign. It was a loop connecting customer comprehension, system accuracy, operating metrics, and business outcomes."
+  }
+];
+
+const ANALOGY_TRANSFER = {
+  works: [
+    "Pricing promises become real only when downstream systems agree on the same customer, contract, entitlement, charge, and support truth.",
+    "The risk is not only billing accuracy. It is whether the customer or admin can understand what changed, why they were charged, and what control they have.",
+    "A simpler commercial model can increase operational burden if exception handling, approvals, and reconciliation are not designed as product surfaces.",
+    "Finance, legal, GTM, care/support, product, and billing all need a shared operating definition of the promise before scale exposes mismatches.",
+    "The best early metrics are often trust and operational signals: billing disputes, care contacts, payment completion, admin objections, exception volume, and CLV movement.",
+    "The role's leverage is translating strategy into durable system decisions, not choosing a clever package in isolation."
+  ],
+  breaks: [
+    "Telecom rate plans and work-management SaaS have different usage meters, data models, procurement motions, and margin structures.",
+    "Smartsheet's buyer may be an enterprise admin or operations leader, not only an individual consumer reading a monthly bill.",
+    "AI features introduce cost-to-serve, permission, security, governance, and usage-risk questions that telecom packaging did not map to directly.",
+    "Advanced Work Management and enterprise agreements may involve implementation, integrations, and value realization that do not behave like a postpaid wireless plan.",
+    "Public evidence cannot reveal Smartsheet's internal entitlement model, billing platform, Salesforce configuration, rev-rec rules, or exception taxonomy.",
+    "The analogy should guide what to instrument and validate; it should not be used as evidence that Smartsheet should copy a telecom operating model."
+  ]
+};
+
+const ANALYTICAL_SECTIONS = [
+  {
+    id: "04",
+    label: "Current Architecture",
+    title: "The public architecture is visible enough to map, not visible enough to prescribe.",
+    lead: "From the outside, Smartsheet shows five monetization layers: packages, access states, value gates, internal systems, and trust controls. The role's leverage is making those layers agree before new models scale.",
+    variant: "architecture-map",
+    mirrorId: "billing_trust",
+    paragraphs: [
+      "Smartsheet's public surface already shows why this role sits between Product, GTM, and Finance. Pro and Business make membership visible; Enterprise and Advanced Work Management move into custom pricing; USM adds provisional access, reconciliation, and true-up; AI and Claude-related features are now part of the plan surface. Each of those choices is easy to describe on a pricing page and harder to keep consistent across quote, contract, entitlement, provisioning, billing, support, and revenue workflows.",
+      "I would not infer Smartsheet's internal architecture from public pages. The more useful outside-in map is a set of pressure points. Which value is packaged? Which user state creates paid access? Which product event provisions the entitlement? Which billing event explains the charge? Which finance record proves the revenue treatment? If those answers live in different systems without shared definitions, new monetization models create hidden operating debt.",
+      "This is where the T-Mobile billing mirror matters. In a subscription business, technical correctness is necessary but not sufficient. The customer or admin still has to understand the promise, the control they have, the bill they receive, and the action they should take next."
+    ],
+    rows: [
+      {
+        layer: "Package layer",
+        current: "Pro, Business, Enterprise, and Advanced Work Management are public package boundaries; Enterprise and AWM use custom pricing.",
+        mechanism: "Packages define which value is sold as a plan, which value is reserved for enterprise negotiation, and where add-on or advanced capabilities enter the commercial path.",
+        question: "Which package boundaries are stable product definitions, and which are deal-level constructs that downstream systems have to interpret?"
+      },
+      {
+        layer: "Access layer",
+        current: "USM introduces simplified user types, provisional membership, reconciliation periods, true-up mechanics, and Admin approval controls.",
+        mechanism: "Access state becomes monetization state. A user's status, approval, downgrade, and reconciliation path can change the customer's bill and the admin's trust.",
+        question: "Where is the source of truth for user state, and how quickly do product, admin, billing, and support surfaces agree when that state changes?"
+      },
+      {
+        layer: "Value layer",
+        current: "Advanced Work Management, Control Center, Dynamic View, Data Shuttle, Connectors, DataMesh, AI tools, and Claude integration all appear as value gates.",
+        mechanism: "Value gates create entitlement and provisioning decisions: who can use the capability, under which package, with which limit, and with which customer-facing explanation.",
+        question: "Which advanced and AI capabilities should behave like package entitlements, usage-triggered value, or governed enterprise features?"
+      },
+      {
+        layer: "Systems layer",
+        current: "The JD explicitly names Salesforce, product platforms, billing systems, financial systems, provisioning, quote-to-bill, and revenue alignment.",
+        mechanism: "The monetization model has to be represented across sales configuration, contract terms, entitlement services, provisioning events, billing events, and finance records.",
+        question: "Which handoff creates the most defects today: quote to contract, contract to entitlement, entitlement to provisioning, provisioning to billing, or billing to revenue alignment?"
+      },
+      {
+        layer: "Trust layer",
+        current: "Public USM updates emphasize customer and partner feedback, budget predictability, loyalty benefits, and Admin approval controls.",
+        mechanism: "Trust breaks when the admin understands the package but not the seat state, approval path, true-up logic, charge explanation, or support answer.",
+        question: "What system-health metric best predicts admin trust before it becomes a renewal, support, billing-dispute, or exception-management problem?"
+      }
+    ]
+  },
+  {
+    id: "05",
+    label: "The Field",
+    title: "The field is not one monetization choice. It is a portfolio of models with different system burdens.",
+    lead: "Seat, provisional, add-on, usage, AI entitlement, and multi-year enterprise models can all be rational. The hard part is knowing which system burden and trust risk each one creates before it scales.",
+    variant: "competitive-matrix",
+    mirrorId: "tmobile_one",
+    columnLabels: ["Model archetype", "Customer promise", "System representation burden", "Validation signal"],
+    paragraphs: [
+      "For this role, I would treat the field of monetization models as an architecture problem before treating it as a pricing problem. Smartsheet's public surface already includes plan tiers, custom enterprise and Advanced Work Management pricing, provisional access, reconciliation, true-up, admin approval, AI tools, and advanced capability gates. The job description also names subscription, usage-based, consumption, entitlement, provisioning, billing, and revenue-alignment work. That combination argues for a model-by-model readiness view.",
+      "The T-Mobile lesson is useful here because it separates the marketable promise from the operating system behind it. T-Mobile ONE sounded simple at the customer layer, but the work was making legal, accounting, finance, care, retail, billing, and the customer-facing bill carry the same truth. Smartsheet's version will differ, but the same test applies: can the model be represented, explained, governed, audited, and changed without creating exception paths everywhere?"
+    ],
+    rows: [
+      {
+        layer: "Per-seat / member model",
+        current: "Predictable paid access tied to member or user status.",
+        mechanism: "Every system needs the same user taxonomy, permission state, approval path, downgrade logic, and invoice treatment.",
+        question: "Mismatch rate between admin roster, billable roster, provisioning state, and invoice."
+      },
+      {
+        layer: "Provisional / true-up model",
+        current: "Let work start before every admin or procurement action is complete, then reconcile later.",
+        mechanism: "Requires temporal states, approval windows, reconciliation snapshots, true-up rules, and clear charge explanations.",
+        question: "Admin dispute rate, unapproved-to-free downgrade accuracy, true-up exception volume, and support-ticket taxonomy."
+      },
+      {
+        layer: "Add-on / advanced package model",
+        current: "Buy advanced value when workflow complexity justifies it.",
+        mechanism: "Entitlements and provisioning have to know which capabilities are bundled, add-on, enterprise-only, trialed, or exceptioned.",
+        question: "Quote-to-entitlement defects, missing-feature support tickets, and attach or renewal friction by package."
+      },
+      {
+        layer: "Usage / consumption model",
+        current: "Tie price to actual activity, volume, automation, resource use, or outcome intensity.",
+        mechanism: "Needs metering, event definitions, limit policy, cost attribution, customer-facing usage views, and billing aggregation.",
+        question: "Meter-to-bill reconciliation, forecast accuracy, unexpected-usage objections, and finance adjustment volume."
+      },
+      {
+        layer: "AI feature / agent entitlement model",
+        current: "Package AI value by feature access, governance level, or agent capability while preserving customer control.",
+        mechanism: "Requires permission checks, model or agent availability, policy gates, usage and cost telemetry, opt-in controls, and explainable limits.",
+        question: "AI adoption by entitled cohort, cost-to-value variance, blocked or unauthorized usage, and admin opt-in friction."
+      },
+      {
+        layer: "Multi-year enterprise agreement model",
+        current: "Create commercial certainty while preserving room for growth, expansion, and model evolution.",
+        mechanism: "Contract terms, ramps, amendments, renewals, product entitlements, billing schedules, and revenue treatment must agree.",
+        question: "Amendment cycle time, renewal exception load, revenue leakage, audit adjustments, and contract-to-entitlement latency."
+      }
+    ]
+  },
+  {
+    id: "06",
+    label: "Customer / Buyer Shift",
+    title: "TK_SECTION_06_TITLE",
+    lead: "TK_SECTION_06_LEAD",
+    variant: "journey-shift",
+    mirrorId: "prime_lifecycle",
+    paragraphs: ["TK_SECTION_06_PARAGRAPH_1", "TK_SECTION_06_PARAGRAPH_2"],
+    rows: [
+      { layer: "Acquisition", current: "TK_ACQUISITION_SHIFT", mechanism: "TK_ACQUISITION_MECHANISM", question: "TK_ACQUISITION_SIGNAL" },
+      { layer: "Activation", current: "TK_ACTIVATION_SHIFT", mechanism: "TK_ACTIVATION_MECHANISM", question: "TK_ACTIVATION_SIGNAL" },
+      { layer: "Retention", current: "TK_RETENTION_SHIFT", mechanism: "TK_RETENTION_MECHANISM", question: "TK_RETENTION_SIGNAL" }
+    ]
+  },
+  {
+    id: "07",
+    label: "Segments",
+    title: "TK_SECTION_07_TITLE",
+    lead: "TK_SECTION_07_LEAD",
+    variant: "segment-map",
+    mirrorId: "jump_partner_economics",
+    paragraphs: ["TK_SECTION_07_PARAGRAPH_1", "TK_SECTION_07_PARAGRAPH_2"],
+    rows: [
+      { layer: "Segment 1", current: "TK_SEGMENT_1_NEED", mechanism: "TK_SEGMENT_1_MECHANISM", question: "TK_SEGMENT_1_TEST" },
+      { layer: "Segment 2", current: "TK_SEGMENT_2_NEED", mechanism: "TK_SEGMENT_2_MECHANISM", question: "TK_SEGMENT_2_TEST" },
+      { layer: "Segment 3", current: "TK_SEGMENT_3_NEED", mechanism: "TK_SEGMENT_3_MECHANISM", question: "TK_SEGMENT_3_TEST" }
+    ]
+  }
+];
+
+const HYPOTHESES = [
+  { id: "A", title: "TK_HYPOTHESIS_A", summary: "TK_HYPOTHESIS_A_SUMMARY", why: "TK_HYPOTHESIS_A_WHY", risk: "TK_HYPOTHESIS_A_RISK", validate: "TK_HYPOTHESIS_A_VALIDATE", confidence: "High confidence as diagnosis; lower confidence as prescription until internal data resolves it.", tone: "warning" },
+  { id: "B", title: "TK_HYPOTHESIS_B", summary: "TK_HYPOTHESIS_B_SUMMARY", why: "TK_HYPOTHESIS_B_WHY", risk: "TK_HYPOTHESIS_B_RISK", validate: "TK_HYPOTHESIS_B_VALIDATE", confidence: "Medium confidence. Strong enough to test, not strong enough to hard-code.", tone: "warning" },
+  { id: "C", title: "TK_HYPOTHESIS_C", summary: "TK_HYPOTHESIS_C_SUMMARY", why: "TK_HYPOTHESIS_C_WHY", risk: "TK_HYPOTHESIS_C_RISK", validate: "TK_HYPOTHESIS_C_VALIDATE", confidence: "Highest confidence starting point because it creates learning without overcommitting the roadmap.", tone: "positive", startingPoint: true },
+  { id: "D", title: "TK_HYPOTHESIS_D", summary: "TK_HYPOTHESIS_D_SUMMARY", why: "TK_HYPOTHESIS_D_WHY", risk: "TK_HYPOTHESIS_D_RISK", validate: "TK_HYPOTHESIS_D_VALIDATE", confidence: "Low to medium confidence. Instrument now; decide later.", tone: "warning" }
+];
+
+const INTERACTIVE_MODEL = {
+  type: "diagnostic-model",
+  title: "TK_INTERACTIVE_TITLE",
+  lead: "This diagnostic is a sensitivity model, not a recommendation engine. It is designed to show how the strategic answer changes when customer readiness and operating burden move.",
+  caveat: "Illustrative scores. Replace with internal telemetry, customer research, support taxonomy, and financial model outputs before using this to make a roadmap decision.",
+  axes: [
+    {
+      id: "customer_readiness",
+      label: "Customer readiness",
+      options: [
+        { id: "low", label: "Low readiness", description: "Customer wants the outcome but needs translation, guardrails, and proof.", scores: { trust: -12, revenue: -8, complexity: 10, confidence: -8 } },
+        { id: "mixed", label: "Mixed readiness", description: "Some users understand the value; others need onboarding and limits.", scores: { trust: 2, revenue: 4, complexity: 6, confidence: 2 } },
+        { id: "high", label: "High readiness", description: "Customer understands the value, tradeoff, and operating boundary.", scores: { trust: 14, revenue: 12, complexity: -2, confidence: 12 } }
+      ]
+    },
+    {
+      id: "operating_burden",
+      label: "Operating burden",
+      options: [
+        { id: "light", label: "Light burden", description: "Few dependencies, low support load, clear recovery path.", scores: { trust: 10, revenue: 6, complexity: -12, confidence: 10 } },
+        { id: "medium", label: "Medium burden", description: "Some cross-functional work, but ownership can be made clear.", scores: { trust: 2, revenue: 8, complexity: 6, confidence: 0 } },
+        { id: "heavy", label: "Heavy burden", description: "High support, compliance, reliability, cost, or partner dependency.", scores: { trust: -14, revenue: 10, complexity: 18, confidence: -12 } }
+      ]
+    }
+  ],
+  outcomeMetrics: [
+    { id: "trust", label: "Customer trust", highGood: true },
+    { id: "revenue", label: "Revenue fit", highGood: true },
+    { id: "complexity", label: "Operating complexity", highGood: false },
+    { id: "confidence", label: "Decision confidence", highGood: true }
+  ],
+  testCombinations: [
+    { name: "Guardrail first", selections: { customer_readiness: "low", operating_burden: "heavy" }, expectedPattern: "High trust risk, high complexity, low confidence. Start with research and guardrails." },
+    { name: "Learnable wedge", selections: { customer_readiness: "mixed", operating_burden: "medium" }, expectedPattern: "Balanced tradeoff. Good candidate for fake-door or limited pilot." },
+    { name: "Scale candidate", selections: { customer_readiness: "high", operating_burden: "light" }, expectedPattern: "Stronger trust and confidence. Candidate to package after validation." }
+  ]
+};
+
+const FRAMEWORK_GATES = [
+  { gate: "Customer job", mechanism: "TK_FRAMEWORK_JOB_MECHANISM", risk: "TK_FRAMEWORK_JOB_RISK", validate: "TK_FRAMEWORK_JOB_VALIDATE" },
+  { gate: "Trust package", mechanism: "TK_FRAMEWORK_TRUST_MECHANISM", risk: "TK_FRAMEWORK_TRUST_RISK", validate: "TK_FRAMEWORK_TRUST_VALIDATE" },
+  { gate: "Operating model", mechanism: "TK_FRAMEWORK_OPERATING_MECHANISM", risk: "TK_FRAMEWORK_OPERATING_RISK", validate: "TK_FRAMEWORK_OPERATING_VALIDATE" },
+  { gate: "Commercial fit", mechanism: "TK_FRAMEWORK_COMMERCIAL_MECHANISM", risk: "TK_FRAMEWORK_COMMERCIAL_RISK", validate: "TK_FRAMEWORK_COMMERCIAL_VALIDATE" }
+];
+
+const VALIDATION_PHASES = [
+  { range: "Days 1-30", title: "Listen and instrument", actions: ["TK_30_DAY_ACTION_1", "TK_30_DAY_ACTION_2", "TK_30_DAY_ACTION_3"], signal: "TK_30_DAY_SIGNAL" },
+  { range: "Days 31-60", title: "Prototype and pressure-test", actions: ["TK_60_DAY_ACTION_1", "TK_60_DAY_ACTION_2", "TK_60_DAY_ACTION_3"], signal: "TK_60_DAY_SIGNAL" },
+  { range: "Days 61-90", title: "Decide what to scale or stop", actions: ["TK_90_DAY_ACTION_1", "TK_90_DAY_ACTION_2", "TK_90_DAY_ACTION_3"], signal: "TK_90_DAY_SIGNAL" }
+];
+
+const OPEN_QUESTION_GROUPS = [
+  { group: "Data I cannot see externally", questions: ["TK_DATA_QUESTION_1", "TK_DATA_QUESTION_2", "TK_DATA_QUESTION_3", "TK_DATA_QUESTION_4"] },
+  { group: "Product strategy", questions: ["TK_STRATEGY_QUESTION_1", "TK_STRATEGY_QUESTION_2", "TK_STRATEGY_QUESTION_3", "TK_STRATEGY_QUESTION_4"] },
+  { group: "Operating model", questions: ["TK_OPERATING_QUESTION_1", "TK_OPERATING_QUESTION_2", "TK_OPERATING_QUESTION_3", "TK_OPERATING_QUESTION_4"] }
+];
+
+const CAREER_ARCS = [
+  { era: "Amazon Prime", company: "Prime Worldwide Engagement", role: "Senior Manager, Product", relevance: "Lifecycle, activation, benefit discovery, and CLV systems.", wins: ["Built and led a PM team from 1 to 5 Senior PMTs.", "Owned a platform connecting benefit recommendation engines and surfaces across 26 countries.", "Work associated with renewal, shopping activity, utilization, and impression-scale outcomes."], tieIn: "Use this arc when the target role needs lifecycle systems, engagement platforms, or customer-value activation." },
+  { era: "T-Mobile", company: "Billing and Benefits / T-Mobile ONE", role: "Senior Product Leader", relevance: "Customer trust, packaging clarity, bill comprehension, and enterprise alignment.", wins: ["Led product workstream for T-Mobile ONE pricing and packaging simplification.", "Rebuilt billing as a product experience around comprehension, payment completion, and care-call reduction.", "Worked across legal, accounting, finance, care, retail, customer delivery, and billing."], tieIn: "Use this arc when the target role needs monetization clarity, operational trust, or cross-functional product leadership." },
+  { era: "T-Mobile", company: "JUMP and Device Programs", role: "Product Owner", relevance: "Add-on packaging, attachment, vendor economics, insurance, and mobile security.", wins: ["Owned JUMP attachment and partner-facing program outcomes.", "Owned technical integration change between Asurion and Assurant.", "Managed Lookout relationship and mobile security value packaging."], tieIn: "Use this arc when the target role needs partner economics, add-on monetization, or customer-facing value clarity." }
+];
+
+function applyDesignTokens(tokens) {
+  const root = document.documentElement;
+  const map = {
+    "--color-bg": tokens.colors.bg,
+    "--color-surface": tokens.colors.surface,
+    "--color-surface-soft": tokens.colors.surfaceSoft,
+    "--color-text": tokens.colors.text,
+    "--color-muted": tokens.colors.muted,
+    "--color-subtle": tokens.colors.subtle,
+    "--color-border": tokens.colors.border,
+    "--color-accent": tokens.colors.accent,
+    "--color-accent-strong": tokens.colors.accentStrong,
+    "--color-accent-soft": tokens.colors.accentSoft,
+    "--color-warning": tokens.colors.warning,
+    "--color-warning-soft": tokens.colors.warningSoft,
+    "--color-positive": tokens.colors.positive,
+    "--color-positive-soft": tokens.colors.positiveSoft
+  };
+  Object.entries(map).forEach(([key, value]) => root.style.setProperty(key, value));
+  root.style.setProperty("--font-body", tokens.typography.body);
+  root.style.setProperty("--font-display", tokens.typography.display);
+  root.style.setProperty("--font-mono", tokens.typography.mono);
+}
+
+function clamp(value, min = 0, max = 100) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function getOption(axis, id) {
+  return axis.options.find((option) => option.id === id) || axis.options[0];
+}
+
+function computeDiagnosticOutcome(model, selections) {
+  const base = { trust: 52, revenue: 48, complexity: 48, confidence: 46 };
+  model.axes.forEach((axis) => {
+    const option = getOption(axis, selections[axis.id]);
+    Object.entries(option.scores).forEach(([metric, delta]) => {
+      base[metric] = clamp(base[metric] + delta);
+    });
+  });
+
+  const readyToScale = base.trust >= 60 && base.confidence >= 58 && base.complexity <= 55;
+  const learnable = base.confidence >= 45 && base.complexity <= 70;
+  const verdict = readyToScale
+    ? "Package after validation"
+    : learnable
+      ? "Run a contained learning loop"
+      : "Do not scale yet";
+  const explanation = readyToScale
+    ? "The pattern looks promising, but the memo posture still requires validation before commitment."
+    : learnable
+      ? "The pattern is useful enough to test, but the operating burden or trust work still matters."
+      : "The signal says to reduce risk before building a polished customer-facing answer.";
+
+  return { metrics: base, verdict, explanation };
+}
+
+const Eyebrow = ({ children, className = "" }) => (
+  <div className={`eyebrow ${className}`}>{children}</div>
+);
+
+const SectionHeader = ({ id, label, title, lead }) => (
+  <div className="mb-10 md:mb-12">
+    <div className="flex flex-wrap items-center gap-3 mb-4">
+      <span className="mono text-xs subtle tabular-nums">Section {id}</span>
+      <Eyebrow>{label}</Eyebrow>
+    </div>
+    <h2 className="serif text-3xl md:text-5xl leading-tight max-w-5xl mb-5">{title}</h2>
+    {lead && <p className="text-lg md:text-xl leading-relaxed muted max-w-4xl">{lead}</p>}
+  </div>
+);
+
+const SectionShell = ({ id, children }) => {
+  const plan = SECTION_PLAN.find((section) => section.id === id);
+  return (
+    <section id={`section-${id}`} data-section-id={id} data-section-variant={plan?.variant || "custom"} className={id === "01" ? "hero" : "section"}>
+      <div className="wrap">{children}</div>
+    </section>
+  );
+};
+
+const Card = ({ children, className = "", ...props }) => (
+  <div className={`card p-6 md:p-8 ${className}`} {...props}>{children}</div>
+);
+
+const FlatCard = ({ children, className = "", ...props }) => (
+  <div className={`flat-card p-5 md:p-6 ${className}`} {...props}>{children}</div>
+);
+
+const MetricBar = ({ label, value, highGood = true, note }) => {
+  const numeric = Math.round(value);
+  const good = highGood ? numeric >= 60 : numeric <= 45;
+  const tone = good ? "var(--color-positive)" : "var(--color-warning)";
+  return (
+    <div className="flat-card p-5">
+      <div className="flex items-baseline justify-between gap-4 mb-3">
+        <div className="font-semibold">{label}</div>
+        <div className="mono text-sm" style={{ color: tone }}>{numeric}</div>
+      </div>
+      <div className="h-2 rounded-full overflow-hidden" style={{ background: "var(--color-surface-soft)" }}>
+        <div className="metric-fill h-full" style={{ width: `${numeric}%`, background: tone }} />
+      </div>
+      {note && <p className="text-sm muted leading-relaxed mt-3">{note}</p>}
+    </div>
+  );
+};
+
+const ExperienceMirror = ({ mirrorId }) => {
+  const mirror = EXPERIENCE_MIRRORS.find((item) => item.id === mirrorId);
+  if (!mirror) return null;
+  return (
+    <div className="soft-card p-5 mt-8" data-source-status={mirror.sourceStatus}>
+      <Eyebrow className="mb-3">Experience mirror - use only if it sharpens the point</Eyebrow>
+      <p className="leading-relaxed mb-3">{mirror.sentence}</p>
+      <p className="mono text-xs muted">Backed by: {mirror.sourceStatus} - {mirror.sourceLabel}</p>
+    </div>
+  );
+};
+
+const DesignTokenSection = () => (
+  <section id="section-00" data-section-id="00" data-section-variant="token-first-neutral" className="sr-only">
+    <h2>Section 00 Design Token Application</h2>
+    <p>Apply the Design Token Spec to this template before drafting strategic content.</p>
+  </section>
+);
+
+const Hero = () => (
+  <SectionShell id="01">
+    <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-start">
+      <div>
+        <Eyebrow className="mb-5">{BRIEF_META.roleTitle} - prepared for {BRIEF_META.company} - {BRIEF_META.preparedDate}</Eyebrow>
+        <h1 className="serif text-4xl md:text-6xl leading-[1.02] mb-8">
+          Smartsheet's next monetization constraint may be making every new model reliable from quote to entitlement to billing, not simply inventing new packages.
+        </h1>
+        <div className="space-y-5 text-lg leading-relaxed muted max-w-3xl">
+          <p>I am a senior product leader with 18+ years across subscription lifecycle, billing trust, and monetization systems at T-Mobile and Amazon Prime. The closest mirror for this role is the sequence from T-Mobile ONE to Billing &amp; Benefits: simplifying the customer promise, then making legal, accounting, finance, care, retail, billing, and the customer-facing bill carry the same truth.</p>
+          <p>{BRIEF_META.memoPosture}</p>
+          <div className="soft-card p-5">
+            <Eyebrow className="mb-3">If you only read three lines</Eyebrow>
+            <p className="leading-relaxed">Smartsheet is moving from work management scale into more complex monetization: AI features, advanced packages, provisional access, admin approval, and future usage or consumption models. The leak to watch is not pricing creativity; it is whether quote, entitlement, provisioning, billing, support, reporting, and revenue alignment stay synchronized as models change. The whitespace is a monetization architecture discipline that lets Product, GTM, Finance, and customers move faster without turning every new model into an exception path.</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <div className="grid grid-cols-2 gap-3">
+          {HERO_STATS.map((stat) => (
+            <FlatCard key={stat.label}>
+              <div className="serif text-3xl md:text-4xl accent mb-2">{stat.value}</div>
+              <div className="text-sm font-semibold mb-1">{stat.label}</div>
+              <div className="mono text-[11px] muted">{stat.source}</div>
+            </FlatCard>
+          ))}
+        </div>
+        <div className="card p-5">
+          <Eyebrow className="mb-4">How to read this</Eyebrow>
+          <div className="space-y-4">
+            {READ_PATHS.map((path) => (
+              <div key={path.time} className="border-t first:border-t-0 pt-4 first:pt-0" style={{ borderColor: "var(--color-border)" }}>
+                <div className="mono text-xs accent mb-1">{path.time}</div>
+                <div className="font-semibold mb-1">{path.title}</div>
+                <p className="text-sm muted leading-relaxed">{path.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </SectionShell>
+);
+
+const SetupSection = () => (
+  <SectionShell id="02">
+    <SectionHeader id="02" label="The Setup" title="Three forces make this a monetization architecture role: scale, model change, and AI-era product expansion." lead="The outside-in signal is not that Smartsheet needs a new price point. It is that each new package, user state, admin control, AI entitlement, and future usage model has to remain explainable from quote through provisioning, billing, and revenue alignment." />
+    <div className="grid md:grid-cols-3 gap-4">
+      {SETUP_CARDS.map((card) => (
+        <Card key={card.tag}>
+          <Eyebrow className="mb-4">{card.tag}</Eyebrow>
+          <h3 className="serif text-2xl leading-tight mb-4">{card.head}</h3>
+          <p className="muted leading-relaxed mb-5">{card.body}</p>
+          <div className="mono text-xs muted pt-4 border-t" style={{ borderColor: "var(--color-border)" }}>{card.stat}</div>
+        </Card>
+      ))}
+    </div>
+  </SectionShell>
+);
+
+const AnalogySection = () => {
+  const [active, setActive] = useState(2);
+  const phase = ANALOGY_PHASES[active];
+  return (
+    <SectionShell id="03">
+      <SectionHeader id="03" label="The Analogy" title="T-Mobile's useful lesson is that monetization simplification only works when every downstream system carries the same promise." lead="I would use this analogy carefully. It transfers as a pricing-to-billing-to-trust mechanism, not as a literal telecom economics model. The useful pattern is how a simpler promise exposed the next product problem: customer comprehension and operating alignment." />
+      <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8">
+        <div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-3 no-print">
+            {ANALOGY_PHASES.map((item, index) => (
+              <button
+                key={item.label}
+                type="button"
+                onClick={() => setActive(index)}
+                aria-pressed={active === index}
+                className="focus-ring text-left flat-card p-4"
+                style={{ borderColor: active === index ? "var(--color-accent)" : "var(--color-border)", background: active === index ? "var(--color-accent-soft)" : "var(--color-surface)" }}
+              >
+                <Eyebrow className="mb-2">{item.pivot ? "Pivot" : "Phase"}</Eyebrow>
+                <div className="font-semibold">{item.label}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+        <Card>
+          <Eyebrow className="mb-4">{phase.pivot ? "Inflection point" : "Selected phase"}</Eyebrow>
+          <h3 className="serif text-3xl mb-5">{phase.label}</h3>
+          <div className="grid md:grid-cols-3 gap-4">
+            <FlatCard><Eyebrow className="mb-2">Buyer side</Eyebrow><p className="text-sm muted leading-relaxed">{phase.buyer}</p></FlatCard>
+            <FlatCard><Eyebrow className="mb-2">Economic side</Eyebrow><p className="text-sm muted leading-relaxed">{phase.economics}</p></FlatCard>
+            <FlatCard><Eyebrow className="mb-2">Lesson</Eyebrow><p className="text-sm muted leading-relaxed">{phase.lesson}</p></FlatCard>
+          </div>
+        </Card>
+      </div>
+      <div className="grid md:grid-cols-2 gap-4 mt-8">
+        <FlatCard>
+          <Eyebrow className="mb-4">Where this transfers</Eyebrow>
+          <ul className="space-y-3 text-sm muted leading-relaxed">{ANALOGY_TRANSFER.works.map((item) => <li key={item}>{item}</li>)}</ul>
+        </FlatCard>
+        <FlatCard>
+          <Eyebrow className="mb-4">Where it breaks</Eyebrow>
+          <ul className="space-y-3 text-sm muted leading-relaxed">{ANALOGY_TRANSFER.breaks.map((item) => <li key={item}>{item}</li>)}</ul>
+        </FlatCard>
+      </div>
+      <div className="soft-card p-6 mt-8" style={{ borderLeft: "4px solid var(--color-accent)" }}>
+        <p className="text-lg leading-relaxed muted">The analogy I would carry into Smartsheet is not "make pricing simpler." It is narrower: when a monetization promise changes, the system has to keep the customer promise, contract, entitlement, provisioning state, bill, support explanation, and revenue record in agreement.</p>
+      </div>
+    </SectionShell>
+  );
+};
+
+const AnalysisSection = ({ section }) => {
+  const labels = section.columnLabels || ["Layer", "Current signal", "Mechanism", "Question to resolve"];
+  return (
+    <SectionShell id={section.id}>
+      <SectionHeader id={section.id} label={section.label} title={section.title} lead={section.lead} />
+      <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 items-start">
+        <div className="space-y-5 text-lg leading-relaxed muted">
+          {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          <ExperienceMirror mirrorId={section.mirrorId} />
+        </div>
+        <div className="flat-card overflow-hidden">
+          {section.rows.map((row) => (
+            <div key={row.layer} className="grid md:grid-cols-[0.75fr_1.05fr_1.05fr_1fr] border-b last:border-b-0" style={{ borderColor: "var(--color-border)" }}>
+              <div className="p-4 md:p-5 md:border-r" style={{ borderColor: "var(--color-border)" }}><Eyebrow className="mb-2">{labels[0]}</Eyebrow><div className="font-semibold">{row.layer}</div></div>
+              <div className="p-4 md:p-5 md:border-r" style={{ borderColor: "var(--color-border)" }}><Eyebrow className="mb-2">{labels[1]}</Eyebrow><p className="text-sm muted leading-relaxed">{row.current}</p></div>
+              <div className="p-4 md:p-5 md:border-r" style={{ borderColor: "var(--color-border)" }}><Eyebrow className="mb-2">{labels[2]}</Eyebrow><p className="text-sm muted leading-relaxed">{row.mechanism}</p></div>
+              <div className="p-4 md:p-5"><Eyebrow className="mb-2">{labels[3]}</Eyebrow><p className="text-sm muted leading-relaxed">{row.question}</p></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </SectionShell>
+  );
+};
+
+const HypothesesSection = () => (
+  <SectionShell id="08">
+    <SectionHeader id="08" label="Hypotheses" title="The answer should be earned, not assumed." lead="These are starting hypotheses to pressure-test with internal data, customer research, financial modeling, and operating constraints." />
+    <div className="grid md:grid-cols-2 gap-4">
+      {HYPOTHESES.map((h) => (
+        <Card key={h.id} className={h.startingPoint ? "ring-2" : ""} style={{ borderColor: h.startingPoint ? "var(--color-positive)" : undefined }}>
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <Eyebrow className="mb-2">Hypothesis {h.id}</Eyebrow>
+              <h3 className="serif text-2xl leading-tight">{h.title}</h3>
+            </div>
+            {h.startingPoint && <span className="mono text-[11px] px-2 py-1 rounded" style={{ background: "var(--color-positive-soft)", color: "var(--color-positive)" }}>Starting point</span>}
+          </div>
+          <p className="muted leading-relaxed mb-5">{h.summary}</p>
+          <div className="space-y-4 text-sm muted leading-relaxed">
+            <div><Eyebrow className="mb-1">Why this might be true</Eyebrow><p>{h.why}</p></div>
+            <div><Eyebrow className="mb-1">Why this might be wrong</Eyebrow><p>{h.risk}</p></div>
+            <div><Eyebrow className="mb-1">What would resolve this</Eyebrow><p>{h.validate}</p></div>
+          </div>
+          <div className="mt-5 pt-4 border-t" style={{ borderColor: "var(--color-border)" }}>
+            <Eyebrow className="mb-1">Confidence</Eyebrow>
+            <p className="italic" style={{ color: h.tone === "positive" ? "var(--color-positive)" : "var(--color-warning)" }}>{h.confidence}</p>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </SectionShell>
+);
+
+const DiagnosticInteractive = () => {
+  const initialSelections = Object.fromEntries(INTERACTIVE_MODEL.axes.map((axis) => [axis.id, axis.options[1]?.id || axis.options[0].id]));
+  const [selections, setSelections] = useState(initialSelections);
+  const outcome = useMemo(() => computeDiagnosticOutcome(INTERACTIVE_MODEL, selections), [selections]);
+
+  const updateSelection = (axisId, optionId) => {
+    setSelections((current) => ({ ...current, [axisId]: optionId }));
+  };
+
+  return (
+    <SectionShell id="09">
+      <SectionHeader id="09" label="Interactive Component" title={INTERACTIVE_MODEL.title} lead={INTERACTIVE_MODEL.lead} />
+      <div className="soft-card p-5 mb-8">
+        <Eyebrow className="mb-2">Read this as a model, not a recommender</Eyebrow>
+        <p className="text-sm leading-relaxed muted">{INTERACTIVE_MODEL.caveat}</p>
+      </div>
+
+      <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8">
+        <div className="space-y-5">
+          {INTERACTIVE_MODEL.axes.map((axis) => (
+            <Card key={axis.id}>
+              <Eyebrow className="mb-4">{axis.label}</Eyebrow>
+              <div className="grid gap-3">
+                {axis.options.map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => updateSelection(axis.id, option.id)}
+                    aria-pressed={selections[axis.id] === option.id}
+                    className="focus-ring text-left flat-card p-4"
+                    style={{ borderColor: selections[axis.id] === option.id ? "var(--color-accent)" : "var(--color-border)", background: selections[axis.id] === option.id ? "var(--color-accent-soft)" : "var(--color-surface)" }}
+                  >
+                    <div className="font-semibold mb-1">{option.label}</div>
+                    <p className="text-sm muted leading-relaxed">{option.description}</p>
+                  </button>
+                ))}
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        <Card>
+          <Eyebrow className="mb-4">Diagnostic outcome</Eyebrow>
+          <h3 className="serif text-3xl mb-3">{outcome.verdict}</h3>
+          <p className="muted leading-relaxed mb-6">{outcome.explanation}</p>
+          <div className="grid sm:grid-cols-2 gap-4 mb-8">
+            {INTERACTIVE_MODEL.outcomeMetrics.map((metric) => (
+              <MetricBar key={metric.id} label={metric.label} value={outcome.metrics[metric.id]} highGood={metric.highGood} />
+            ))}
+          </div>
+          <div className="flat-card p-5">
+            <Eyebrow className="mb-4">Required differentiation tests</Eyebrow>
+            <div className="space-y-4">
+              {INTERACTIVE_MODEL.testCombinations.map((combo) => (
+                <div key={combo.name} className="text-sm leading-relaxed">
+                  <div className="font-semibold">{combo.name}</div>
+                  <p className="muted">{combo.expectedPattern}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Card>
+      </div>
+    </SectionShell>
+  );
+};
+
+const FrameworkSection = () => (
+  <SectionShell id="10">
+    <SectionHeader id="10" label="Framework I Would Validate" title="TK_FRAMEWORK_SECTION_TITLE" lead="This is an illustrative framework, not a final recommendation. It should be calibrated with internal data before it becomes a roadmap, package, price, or org decision." />
+    <div className="grid md:grid-cols-2 gap-4">
+      {FRAMEWORK_GATES.map((gate) => (
+        <Card key={gate.gate}>
+          <Eyebrow className="mb-4">{gate.gate}</Eyebrow>
+          <div className="space-y-4 text-sm leading-relaxed muted">
+            <div><div className="font-semibold" style={{ color: "var(--color-text)" }}>Mechanism</div><p>{gate.mechanism}</p></div>
+            <div><div className="font-semibold" style={{ color: "var(--color-text)" }}>Risk</div><p>{gate.risk}</p></div>
+            <div><div className="font-semibold" style={{ color: "var(--color-text)" }}>Validate</div><p>{gate.validate}</p></div>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </SectionShell>
+);
+
+const ValidationPlan = () => (
+  <SectionShell id="11">
+    <SectionHeader id="11" label="Validation Plan" title="TK_VALIDATION_SECTION_TITLE" lead="The plan is about learning responsibly, not pretending outside-in research is enough to make the decision." />
+    <div className="grid md:grid-cols-3 gap-4 mb-8">
+      {VALIDATION_PHASES.map((phase) => (
+        <Card key={phase.range}>
+          <Eyebrow className="mb-4">{phase.range}</Eyebrow>
+          <h3 className="serif text-2xl mb-4">{phase.title}</h3>
+          <ul className="space-y-3 text-sm muted leading-relaxed mb-5">
+            {phase.actions.map((action) => <li key={action}>{action}</li>)}
+          </ul>
+          <div className="pt-4 border-t" style={{ borderColor: "var(--color-border)" }}>
+            <Eyebrow className="mb-2">Decision signal</Eyebrow>
+            <p className="text-sm muted leading-relaxed">{phase.signal}</p>
+          </div>
+        </Card>
+      ))}
+    </div>
+    <div className="soft-card p-5">
+      <Eyebrow className="mb-2">What I would not do</Eyebrow>
+      <p className="text-sm muted leading-relaxed">TK_VALIDATION_NOT_DO. This keeps the memo humble on prescription and high-confidence only where the evidence supports it.</p>
+    </div>
+  </SectionShell>
+);
+
+const OpenQuestions = () => (
+  <SectionShell id="12">
+    <SectionHeader id="12" label="Open Questions" title="TK_OPEN_QUESTIONS_SECTION_TITLE" lead="These questions should not be answerable from public sources or already answered elsewhere in the brief. They are the internal signals that would change the read." />
+    <div className="grid md:grid-cols-3 gap-4">
+      {OPEN_QUESTION_GROUPS.map((group) => (
+        <Card key={group.group}>
+          <Eyebrow className="mb-4">{group.group}</Eyebrow>
+          <ol className="space-y-4 text-sm muted leading-relaxed list-decimal list-inside">
+            {group.questions.map((question) => <li key={question}>{question}</li>)}
+          </ol>
+        </Card>
+      ))}
+    </div>
+  </SectionShell>
+);
+
+const KelvinBridge = () => (
+  <SectionShell id="13">
+    <SectionHeader id="13" label="Why This Profile" title="TK_PROFILE_SECTION_TITLE" lead="This section should map resume-backed experience to the role's transition while being explicit about what Kelvin would not claim." />
+    <div className="grid md:grid-cols-3 gap-4 mb-10">
+      {CAREER_ARCS.map((arc) => (
+        <Card key={arc.company}>
+          <Eyebrow className="mb-4">{arc.era}</Eyebrow>
+          <h3 className="serif text-2xl mb-1">{arc.company}</h3>
+          <div className="mono text-xs muted mb-4">{arc.role}</div>
+          <p className="text-sm accent italic leading-relaxed mb-5">{arc.relevance}</p>
+          <ul className="space-y-3 text-sm muted leading-relaxed mb-5">
+            {arc.wins.map((win) => <li key={win}>{win}</li>)}
+          </ul>
+          <div className="pt-4 border-t text-sm muted italic leading-relaxed" style={{ borderColor: "var(--color-border)" }}>{arc.tieIn}</div>
+        </Card>
+      ))}
+    </div>
+    <div className="grid md:grid-cols-2 gap-8">
+      <FlatCard>
+        <Eyebrow className="mb-4">Current period</Eyebrow>
+        <h3 className="serif text-2xl mb-4">TK_CAREER_BREAK_TITLE</h3>
+        <p className="muted leading-relaxed mb-4">TK_CAREER_BREAK_FRAMING</p>
+        <p className="muted leading-relaxed">TK_AI_TOOLING_FRAMING</p>
+      </FlatCard>
+      <FlatCard>
+        <Eyebrow className="mb-4">What I would not claim</Eyebrow>
+        <p className="muted leading-relaxed mb-4">TK_PROFILE_NOT_CLAIM_1</p>
+        <p className="muted leading-relaxed">TK_PROFILE_REDIRECT_TO_BET</p>
+      </FlatCard>
+    </div>
+  </SectionShell>
+);
+
+const Footer = () => (
+  <footer className="section">
+    <div className="wrap">
+      <div className="hairline mb-10" />
+      <div className="grid md:grid-cols-3 gap-8">
+        <div>
+          <Eyebrow className="mb-3">Prepared by</Eyebrow>
+          <div className="serif text-2xl mb-1">{BRIEF_META.preparedBy}</div>
+          <div className="mono text-xs muted">Senior product leader - Seattle</div>
+        </div>
+        <div>
+          <Eyebrow className="mb-3">Prepared for</Eyebrow>
+          <div>{BRIEF_META.preparedFor}</div>
+          <div className="mono text-xs muted mt-2">{BRIEF_META.roleTitle} - {BRIEF_META.preparedDate}</div>
+        </div>
+        <div>
+          <Eyebrow className="mb-3">Sources and method</Eyebrow>
+          <p className="text-xs muted leading-relaxed">TK_SOURCE_METHOD. Public facts should be rechecked before final submission. Kelvin career facts must map to the resume, story bank, user fact ledger, or explicit user confirmation.</p>
+        </div>
+      </div>
+      <div className="mono text-[11px] subtle tracking-wide pt-8 mt-8 border-t flex flex-col sm:flex-row gap-2 sm:justify-between" style={{ borderColor: "var(--color-border)" }}>
+        <span>End of brief</span>
+        <span>Template v2.0 - token-first modular scaffold</span>
+      </div>
+    </div>
+  </footer>
+);
+
+const StrategyBrief = () => {
+  useEffect(() => applyDesignTokens(DESIGN_TOKENS), []);
+  return (
+    <main id="main" className="page">
+      <DesignTokenSection />
+      <Hero />
+      <SetupSection />
+      <AnalogySection />
+      {ANALYTICAL_SECTIONS.map((section) => <AnalysisSection key={section.id} section={section} />)}
+      <HypothesesSection />
+      <DiagnosticInteractive />
+      <FrameworkSection />
+      <ValidationPlan />
+      <OpenQuestions />
+      <KelvinBridge />
+      <Footer />
+    </main>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<StrategyBrief />);
+</script>
+</body>
+</html>
