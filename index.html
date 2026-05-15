@@ -165,7 +165,7 @@ const DESIGN_TOKENS = {
 
 const SECTION_PLAN = [
   { id: "00", label: "Design Token Application", public: false, variant: "token-first-neutral", allowedVariants: ["token-first-neutral"], analyticalJob: "Apply the company-specific design token spec before content drafting." },
-  { id: "01", label: "Hero / TLDR", public: true, variant: "hero-navigator", allowedVariants: ["hero-navigator", "hero-executive-summary"], analyticalJob: "State the diagnosis, the leak, the whitespace, and how to read the brief." },
+  { id: "01", label: "Hero / TLDR", public: true, variant: "hero-navigator", allowedVariants: ["hero-navigator", "hero-executive-summary"], analyticalJob: "State the diagnosis, the risk, the practical opportunity, and how to read the brief." },
   { id: "02", label: "The Setup", public: true, variant: "three-force-cards", allowedVariants: ["three-force-cards", "problem-stack", "market-signals"], analyticalJob: "Show the three forces that make the role's problem worth a strategic brief." },
   { id: "03", label: "The Analogy", public: true, variant: "interactive-phase-ribbon", allowedVariants: ["interactive-phase-ribbon", "before-after-slider", "transfer-breaks-panel"], analyticalJob: "Use one external transition carefully, naming where it transfers and where it breaks." },
   { id: "04", label: "Current Architecture", public: true, variant: "architecture-map", allowedVariants: ["architecture-map", "capability-stack", "workflow-map"], analyticalJob: "Explain the company's current product, pricing, workflow, or operating architecture." },
@@ -185,6 +185,7 @@ const EXPERIENCE_MIRRORS = [
     id: "prime_lifecycle",
     label: "Prime lifecycle and CLV",
     sourceStatus: "resume_ready",
+    sourcePath: "current resume and story bank",
     sourceLabel: "current resume and story bank",
     useWhen: "The brief discusses activation, engagement, retention, benefit discovery, personalization, or CLV.",
     sentence: "A useful mirror is Prime: retention risk showed up when members failed to discover benefits that made the subscription feel worth renewing."
@@ -193,6 +194,7 @@ const EXPERIENCE_MIRRORS = [
     id: "billing_trust",
     label: "Billing and Benefits as product",
     sourceStatus: "resume_ready",
+    sourcePath: "current resume and story bank",
     sourceLabel: "current resume and story bank",
     useWhen: "The brief discusses trust, comprehension, payments, support demand, or operational surfaces.",
     sentence: "A useful mirror is T-Mobile Billing and Benefits: a system could be technically accurate and still fail the customer trust test."
@@ -201,6 +203,7 @@ const EXPERIENCE_MIRRORS = [
     id: "tmobile_one",
     label: "T-Mobile ONE pricing simplification",
     sourceStatus: "resume_ready",
+    sourcePath: "current resume and shared fact ledger",
     sourceLabel: "current resume and shared fact ledger",
     useWhen: "The brief discusses packaging, rate-plan simplification, legal/accounting alignment, or customer promise clarity.",
     sentence: "A useful mirror is T-Mobile ONE: the customer-facing promise only worked if legal, accounting, care, retail, and billing could carry it."
@@ -209,6 +212,7 @@ const EXPERIENCE_MIRRORS = [
     id: "jump_partner_economics",
     label: "JUMP device programs and partner economics",
     sourceStatus: "story_bank_candidate",
+    sourcePath: "story bank and shared fact ledger",
     sourceLabel: "story bank and shared fact ledger",
     useWhen: "The brief discusses add-on attachment, insurance, partner economics, supply chain, or vendor accountability.",
     sentence: "A useful mirror is JUMP: attachment, protection, upgrade clarity, vendor economics, and customer promise had to move together."
@@ -301,7 +305,7 @@ const ANALOGY_TRANSFER = {
     "A simpler commercial model can increase operational burden if exception handling, approvals, and reconciliation are not designed as product surfaces.",
     "Finance, legal, GTM, care/support, product, and billing all need a shared operating definition of the promise before scale exposes mismatches.",
     "The best early metrics are often trust and operational signals: billing disputes, care contacts, payment completion, admin objections, exception volume, and CLV movement.",
-    "The role's leverage is translating strategy into durable system decisions, not choosing a clever package in isolation."
+    "The role's highest-value work is translating strategy into durable system decisions, not choosing a clever package in isolation."
   ],
   breaks: [
     "Telecom rate plans and work-management SaaS have different usage meters, data models, procurement motions, and margin structures.",
@@ -318,12 +322,12 @@ const ANALYTICAL_SECTIONS = [
     id: "04",
     label: "Current Architecture",
     title: "The public architecture is visible enough to map, not visible enough to prescribe.",
-    lead: "From the outside, Smartsheet shows five monetization layers: packages, access states, value gates, internal systems, and trust controls. The role's leverage is making those layers agree before new models scale.",
+    lead: "From the outside, Smartsheet shows five monetization layers: packages, access states, value gates, internal systems, and trust controls. The role's work is making those layers agree before new models scale.",
     variant: "architecture-map",
     mirrorId: "billing_trust",
     paragraphs: [
       "Smartsheet's public surface already shows why this role sits between Product, GTM, and Finance. Pro and Business make membership visible; Enterprise and Advanced Work Management move into custom pricing; USM adds provisional access, reconciliation, and true-up; AI and Claude-related features are now part of the plan surface. Each of those choices is easy to describe on a pricing page and harder to keep consistent across quote, contract, entitlement, provisioning, billing, support, and revenue workflows.",
-      "I would not infer Smartsheet's internal architecture from public pages. The more useful outside-in map is a set of pressure points. Which value is packaged? Which user state creates paid access? Which product event provisions the entitlement? Which billing event explains the charge? Which finance record proves the revenue treatment? If those answers live in different systems without shared definitions, new monetization models create hidden operating debt.",
+      "I would not infer Smartsheet's internal architecture from public pages. The more useful outside-in map is a set of pressure points: which value is packaged, which user state creates paid access, which product event provisions the entitlement, which billing event explains the charge, and which finance record proves the revenue treatment. If those answers live in different systems without shared definitions, that is where new monetization models can quietly create operating debt.",
       "This is where the T-Mobile billing mirror matters. In a subscription business, technical correctness is necessary but not sufficient. The customer or admin still has to understand the promise, the control they have, the bill they receive, and the action they should take next."
     ],
     rows: [
@@ -413,101 +417,322 @@ const ANALYTICAL_SECTIONS = [
   {
     id: "06",
     label: "Customer / Buyer Shift",
-    title: "TK_SECTION_06_TITLE",
-    lead: "TK_SECTION_06_LEAD",
+    title: "The buyer shift is from seat purchase to governed monetization state.",
+    lead: "The admin is becoming part buyer, part operator: governing who has access, what value is enabled, when costs change, and how those changes are explained.",
     variant: "journey-shift",
     mirrorId: "prime_lifecycle",
-    paragraphs: ["TK_SECTION_06_PARAGRAPH_1", "TK_SECTION_06_PARAGRAPH_2"],
+    columnLabels: ["Shift", "What changes for buyer/admin", "Monetization system implication", "Signal to validate"],
+    paragraphs: [
+      "USM and Admin approval are public signals that monetization is moving closer to the customer operating surface. A buyer can still evaluate plans and budget, but the admin now has to govern provisional members, approval paths, free-to-paid transitions, true-up exposure, advanced features, and eventually AI usage or agent entitlements. The product problem is no longer just \"what did the customer buy?\" It is \"what state is the account in right now, and can every surface explain it?\"",
+      "For the Principal PM, that means the roadmap cannot stop at quote-to-cash mechanics. It has to include the admin mental model, lifecycle messaging, support taxonomy, usage visibility, and the finance record that proves what happened. The Prime lifecycle mirror is useful in a narrow way: subscription value is often lost when customers have access but do not discover, activate, or understand the value they are paying for. Smartsheet's admin version is different, but the shared lesson is practical: value has to be discoverable, governable, measurable, and explainable."
+    ],
     rows: [
-      { layer: "Acquisition", current: "TK_ACQUISITION_SHIFT", mechanism: "TK_ACQUISITION_MECHANISM", question: "TK_ACQUISITION_SIGNAL" },
-      { layer: "Activation", current: "TK_ACTIVATION_SHIFT", mechanism: "TK_ACTIVATION_MECHANISM", question: "TK_ACTIVATION_SIGNAL" },
-      { layer: "Retention", current: "TK_RETENTION_SHIFT", mechanism: "TK_RETENTION_MECHANISM", question: "TK_RETENTION_SIGNAL" }
+      {
+        layer: "From buying seats to governing status",
+        current: "The buyer/admin is no longer only deciding how many seats to buy; they are managing member, free-user, guest, provisional, approval, and downgrade states.",
+        mechanism: "User state becomes a billable lifecycle object that product, admin, support, billing, and finance systems all have to interpret the same way.",
+        question: "Status mismatch rate across admin console, entitlement state, invoice, support tooling, and renewal materials."
+      },
+      {
+        layer: "From static packages to evolving value gates",
+        current: "Advanced Work Management, integrations, AI tools, and enterprise capabilities create access questions after the initial purchase.",
+        mechanism: "Entitlements need to distinguish package inclusion, enterprise-only features, trials, exceptions, usage limits, and admin-approved access.",
+        question: "Feature-access tickets, under-entitlement or over-entitlement incidents, attach friction, and package-change support volume."
+      },
+      {
+        layer: "From annual procurement to ongoing reconciliation",
+        current: "Provisional membership, reconciliation periods, true-up logic, and Admin approval turn monetization into an in-period operating motion.",
+        mechanism: "Quote, contract, admin state, reconciliation snapshot, invoice, and revenue record need a common timeline.",
+        question: "True-up surprise rate, exception volume, forecast variance, and time to resolve admin objections."
+      },
+      {
+        layer: "From bill accuracy to bill explainability",
+        current: "A technically correct invoice can still fail if the admin cannot connect the charge to a seat state, approval path, usage event, or package change.",
+        mechanism: "Invoice, admin console, contract language, support answer, and finance record need a shared explanation layer.",
+        question: "Billing-support contact rate, dispute rate, self-service resolution, and time to answer \"why did this change?\""
+      },
+      {
+        layer: "From AI adoption to governed cost and value",
+        current: "Smart Agents, AI integrations, Claude-related features, and future usage models may create new questions about who can enable value and who controls cost.",
+        mechanism: "AI entitlements need permission checks, opt-in controls, usage/cost telemetry, policy gates, and customer-facing limits.",
+        question: "AI adoption by entitled cohort, admin opt-in friction, unauthorized-use attempts, and cost-to-value variance."
+      }
     ]
   },
   {
     id: "07",
     label: "Segments",
-    title: "TK_SECTION_07_TITLE",
-    lead: "TK_SECTION_07_LEAD",
+    title: "Segmentation should follow operating mode, not only package name.",
+    lead: "The same monetization model will behave differently for a department buyer, an enterprise admin, an Advanced Work Management operator, an AI adopter, and the internal GTM/Finance teams that have to carry the promise.",
     variant: "segment-map",
-    mirrorId: "jump_partner_economics",
-    paragraphs: ["TK_SECTION_07_PARAGRAPH_1", "TK_SECTION_07_PARAGRAPH_2"],
+    mirrorId: "tmobile_one",
+    columnLabels: ["Operating mode", "Primary monetization job", "System tension", "What to validate"],
+    paragraphs: [
+      "Smartsheet's public packages are a useful starting point, but they are not enough to reason about monetization architecture. Pro and Business buyers, Enterprise admins, Advanced Work Management operators, AI-adopting customers, and internal GTM/Finance teams each stress a different part of the system. A clean model for one mode can create exception work in another.",
+      "This is the place where the T-Mobile analogy should stay practical. T-Mobile ONE and Billing & Benefits taught the same lesson from two sides: a customer-facing promise only works when the internal operating views agree. The customer, seller, support team, finance team, and billing surface do not need the same interface, but they do need the same truth."
+    ],
     rows: [
-      { layer: "Segment 1", current: "TK_SEGMENT_1_NEED", mechanism: "TK_SEGMENT_1_MECHANISM", question: "TK_SEGMENT_1_TEST" },
-      { layer: "Segment 2", current: "TK_SEGMENT_2_NEED", mechanism: "TK_SEGMENT_2_MECHANISM", question: "TK_SEGMENT_2_TEST" },
-      { layer: "Segment 3", current: "TK_SEGMENT_3_NEED", mechanism: "TK_SEGMENT_3_MECHANISM", question: "TK_SEGMENT_3_TEST" }
+      {
+        layer: "Team / department buyer on Pro or Business",
+        current: "Make paid collaboration easy to understand, adopt, and expand without heavy sales or admin overhead.",
+        mechanism: "Lightweight buying needs simple user states, clean upgrade paths, clear invoices, and low support burden.",
+        question: "Trial-to-paid or plan-change friction, invite-to-paid conversion, billing-support contacts, and failed self-service actions."
+      },
+      {
+        layer: "Enterprise admin managing governance",
+        current: "Control users, permissions, approvals, security expectations, budget exposure, and renewal risk across a larger organization.",
+        mechanism: "Governance needs policy controls, admin approval, provisional-state clarity, support explainability, and contract alignment.",
+        question: "Approval backlog, provisional-member drift, exception volume, seat-state disputes, and renewal objections tied to governance or spend control."
+      },
+      {
+        layer: "Advanced Work Management operator",
+        current: "Buy operational scale: Control Center, Dynamic View, Data Shuttle, Connectors, DataMesh, Calendar App, Pivot App, and Premium Support.",
+        mechanism: "Advanced value often depends on provisioning, integrations, data movement, implementation readiness, and entitlements across multiple surfaces.",
+        question: "Quote-to-provision latency, entitlement defects, integration setup failures, feature utilization, and expansion or attach friction."
+      },
+      {
+        layer: "AI-adopting customer",
+        current: "Experiment with agents, AI integrations, and assisted work while preserving admin control, trust, and cost visibility.",
+        mechanism: "AI value gates need permissioning, opt-in controls, policy boundaries, usage telemetry, cost logic, and customer-facing explanations.",
+        question: "Entitled-active usage, admin opt-in friction, blocked or unauthorized attempts, cost-to-value variance, and AI-related support taxonomy."
+      },
+      {
+        layer: "Sales/GTM and Finance internal stakeholder",
+        current: "Turn pricing, packaging, contracts, provisioning, billing, and revenue alignment into a repeatable operating path.",
+        mechanism: "Internal teams need each commercial model to be representable in Salesforce, entitlement services, billing systems, financial systems, and reporting.",
+        question: "Quote-to-provision latency, manual adjustment volume, revenue leakage, exception queues, and recurring disagreement between contract, entitlement, bill, and revenue record."
+      }
     ]
   }
 ];
 
 const HYPOTHESES = [
-  { id: "A", title: "TK_HYPOTHESIS_A", summary: "TK_HYPOTHESIS_A_SUMMARY", why: "TK_HYPOTHESIS_A_WHY", risk: "TK_HYPOTHESIS_A_RISK", validate: "TK_HYPOTHESIS_A_VALIDATE", confidence: "High confidence as diagnosis; lower confidence as prescription until internal data resolves it.", tone: "warning" },
-  { id: "B", title: "TK_HYPOTHESIS_B", summary: "TK_HYPOTHESIS_B_SUMMARY", why: "TK_HYPOTHESIS_B_WHY", risk: "TK_HYPOTHESIS_B_RISK", validate: "TK_HYPOTHESIS_B_VALIDATE", confidence: "Medium confidence. Strong enough to test, not strong enough to hard-code.", tone: "warning" },
-  { id: "C", title: "TK_HYPOTHESIS_C", summary: "TK_HYPOTHESIS_C_SUMMARY", why: "TK_HYPOTHESIS_C_WHY", risk: "TK_HYPOTHESIS_C_RISK", validate: "TK_HYPOTHESIS_C_VALIDATE", confidence: "Highest confidence starting point because it creates learning without overcommitting the roadmap.", tone: "positive", startingPoint: true },
-  { id: "D", title: "TK_HYPOTHESIS_D", summary: "TK_HYPOTHESIS_D_SUMMARY", why: "TK_HYPOTHESIS_D_WHY", risk: "TK_HYPOTHESIS_D_RISK", validate: "TK_HYPOTHESIS_D_VALIDATE", confidence: "Low to medium confidence. Instrument now; decide later.", tone: "warning" }
+  {
+    id: "A",
+    title: "Smartsheet's next monetization constraint may be representability, not packaging creativity.",
+    summary: "The public surface already includes plan tiers, custom Enterprise and Advanced Work Management pricing, provisional membership, true-up logic, admin approval, AI tools, and future usage or consumption language in the role. The risk is that every new commercial model creates another translation problem across quote, contract, entitlement, provisioning, billing, support, reporting, and revenue alignment.",
+    why: "The job description explicitly sits across Product Engineering, Sales/GTM, Finance, Salesforce, product platforms, billing systems, financial systems, entitlements, provisioning, and revenue alignment. That is the shape of a representation problem, not only a price-page problem.",
+    risk: "Smartsheet may already have strong shared definitions and low defect rates across those systems. The real constraint could be packaging strategy, sales enablement, elasticity, product adoption, or AI value proof.",
+    validate: "Take the last three meaningful monetization-model changes and trace each from quote to contract to entitlement to provisioning to bill to revenue record. Rank where exceptions, latency, disputes, manual adjustments, or support contacts actually concentrate.",
+    confidence: "High as diagnosis; lower as prescription until internal defect, exception, and revenue-impact data are visible.",
+    tone: "warning"
+  },
+  {
+    id: "B",
+    title: "USM is a useful public signal that admin trust is becoming part of monetization architecture.",
+    summary: "USM, provisional membership, reconciliation, true-up, customer loyalty benefits, and Admin approval all point to a buyer/admin who is managing monetization state after purchase. That makes admin comprehension, budget predictability, and control mechanics part of the product surface.",
+    why: "Smartsheet's public updates frame USM around access, budget predictability, customer feedback, loyalty, and admin approval. Those are trust signals, not only billing operations.",
+    risk: "USM could be a bounded transition program rather than the main future architecture. Admin concern may be concentrated in a subset of customer sizes, contract types, or renewal moments.",
+    validate: "Segment admin objections, billing-support tickets, true-up exceptions, approval behavior, and renewal feedback by customer size, plan, tenure, and sales motion. Look for whether trust issues are systemic or concentrated.",
+    confidence: "Medium-high as a trust lens. Not proven as the dominant roadmap driver without internal evidence.",
+    tone: "warning"
+  },
+  {
+    id: "C",
+    title: "The highest-confidence start is a monetization-system health model before another structural model.",
+    summary: "Before choosing the next package, usage meter, AI entitlement, or contract motion, I would start with a shared view of monetization system health: entitlement accuracy, quote-to-provision latency, billing explainability, admin-control defects, manual adjustment load, and revenue alignment.",
+    why: "A health model creates a common operating language for Product, GTM, Finance, Engineering, Support, and leadership. It makes the hidden cost of model change visible before the business scales a new rule.",
+    risk: "If internal health telemetry is already mature, the bigger gap may be decision rights, roadmap tradeoffs, sales packaging, or product value communication.",
+    validate: "Build a defect taxonomy across entitlement, provisioning, billing, admin controls, support, and revenue alignment. Review it against recent model changes, then decide which one or two health metrics should become release gates for future monetization changes.",
+    confidence: "High. This is the least risky place to start because it improves decision quality without assuming the answer.",
+    tone: "positive",
+    startingPoint: true
+  },
+  {
+    id: "D",
+    title: "The boldest move would be a unified monetization control plane, but it has to be earned by data.",
+    summary: "The long-term architecture could become a shared control layer for pricing model, contract terms, product entitlements, provisioning, billing events, admin controls, usage signals, and revenue alignment. That would let Smartsheet adapt faster as SaaS and AI monetization models evolve.",
+    why: "The public roadmap direction points toward more advanced features, AI capability gates, provisional access, and future usage or consumption models. Those patterns get harder to manage if each system carries its own partial truth.",
+    risk: "A control plane could become an expensive abstraction if the real problem is narrower: one weak integration, one ownership gap, one billing rule, or one admin-experience issue.",
+    validate: "Instrument the current truth path first. If defects cluster across many model types and boundaries, invest in a shared control layer. If defects concentrate in one handoff, fix that handoff before adding architecture.",
+    confidence: "Low to medium. Worth instrumenting now; not responsible to prescribe from the outside.",
+    tone: "warning"
+  }
 ];
 
 const INTERACTIVE_MODEL = {
   type: "diagnostic-model",
-  title: "TK_INTERACTIVE_TITLE",
-  lead: "This diagnostic is a sensitivity model, not a recommendation engine. It is designed to show how the strategic answer changes when customer readiness and operating burden move.",
-  caveat: "Illustrative scores. Replace with internal telemetry, customer research, support taxonomy, and financial model outputs before using this to make a roadmap decision.",
+  title: "Monetization Architecture Readiness Lab",
+  lead: "Choose a monetization model and the system maturity available to support it. The point is not to pick a winner; it is to see which models become risky when the quote-to-revenue path is not ready.",
+  caveat: "Illustrative scores only. Replace them with internal data before making a roadmap decision: quote defects, entitlement exceptions, provisioning latency, billing disputes, admin approval behavior, support taxonomy, sales exception volume, revenue leakage, AI usage cost, and gross-margin sensitivity.",
+  flow: ["Pricing model", "Quote / contract", "Entitlement", "Provisioning", "Usage / admin controls", "Billing", "Revenue alignment"],
   axes: [
     {
-      id: "customer_readiness",
-      label: "Customer readiness",
+      id: "monetization_model",
+      label: "Monetization model",
       options: [
-        { id: "low", label: "Low readiness", description: "Customer wants the outcome but needs translation, guardrails, and proof.", scores: { trust: -12, revenue: -8, complexity: 10, confidence: -8 } },
-        { id: "mixed", label: "Mixed readiness", description: "Some users understand the value; others need onboarding and limits.", scores: { trust: 2, revenue: 4, complexity: 6, confidence: 2 } },
-        { id: "high", label: "High readiness", description: "Customer understands the value, tradeoff, and operating boundary.", scores: { trust: 14, revenue: 12, complexity: -2, confidence: 12 } }
+        { id: "seat_member", label: "Seat / member model", description: "Familiar and governable, but trust depends on clear user states, approvals, and invoice treatment.", scores: { trust: 5, adaptability: -2, audit: 4, simplicity: 10, burden: -4, aiReadiness: -5 } },
+        { id: "provisional_true_up", label: "Provisional / true-up model", description: "Supports collaboration and adoption, but needs admin clarity, reconciliation discipline, and charge explainability.", scores: { trust: -1, adaptability: 8, audit: -4, simplicity: -6, burden: 8, aiReadiness: 0 } },
+        { id: "advanced_add_on", label: "Advanced package / add-on model", description: "Useful for AWM and enterprise value, but can fragment entitlements and GTM motions.", scores: { trust: 1, adaptability: 7, audit: 0, simplicity: -5, burden: 7, aiReadiness: 3 } },
+        { id: "usage_consumption", label: "Usage / consumption model", description: "Flexible for value capture, but raises meter, cost, budget, billing, and revenue-recognition complexity.", scores: { trust: -8, adaptability: 14, audit: -8, simplicity: -14, burden: 16, aiReadiness: 10 } },
+        { id: "ai_agent_entitlement", label: "AI feature / agent entitlement model", description: "Strategically important, with the highest ambiguity around usage, permissioning, cost-to-serve, and explainability.", scores: { trust: -6, adaptability: 12, audit: -6, simplicity: -12, burden: 14, aiReadiness: 16 } }
       ]
     },
     {
-      id: "operating_burden",
-      label: "Operating burden",
+      id: "system_maturity",
+      label: "System maturity",
       options: [
-        { id: "light", label: "Light burden", description: "Few dependencies, low support load, clear recovery path.", scores: { trust: 10, revenue: 6, complexity: -12, confidence: 10 } },
-        { id: "medium", label: "Medium burden", description: "Some cross-functional work, but ownership can be made clear.", scores: { trust: 2, revenue: 8, complexity: 6, confidence: 0 } },
-        { id: "heavy", label: "Heavy burden", description: "High support, compliance, reliability, cost, or partner dependency.", scores: { trust: -14, revenue: 10, complexity: 18, confidence: -12 } }
+        { id: "manual_exception", label: "Manual exception-heavy", description: "Can support bespoke deals, but creates operational drag and inconsistent customer experience.", scores: { trust: -12, adaptability: 0, audit: -14, simplicity: -12, burden: 18, aiReadiness: -10 } },
+        { id: "rule_entitlement", label: "Rule-based entitlement layer", description: "Improves consistency, but can still struggle when contract, product state, and billing state diverge.", scores: { trust: 4, adaptability: 6, audit: 4, simplicity: 2, burden: 2, aiReadiness: 2 } },
+        { id: "integrated_path", label: "Integrated quote-to-provision-to-bill", description: "Makes lifecycle handoffs visible and reduces the trust breaks between selling, provisioning, billing, and support.", scores: { trust: 14, adaptability: 10, audit: 12, simplicity: 8, burden: -4, aiReadiness: 8 } },
+        { id: "control_plane", label: "Governed monetization control plane", description: "Centralizes model definitions, entitlement state, usage signals, billing events, exception governance, and revenue trails.", scores: { trust: 12, adaptability: 18, audit: 18, simplicity: 4, burden: 12, aiReadiness: 16 } }
       ]
     }
   ],
   outcomeMetrics: [
-    { id: "trust", label: "Customer trust", highGood: true },
-    { id: "revenue", label: "Revenue fit", highGood: true },
-    { id: "complexity", label: "Operating complexity", highGood: false },
-    { id: "confidence", label: "Decision confidence", highGood: true }
+    { id: "trust", label: "Customer/admin trust", highGood: true },
+    { id: "adaptability", label: "Revenue adaptability", highGood: true },
+    { id: "audit", label: "Audit/revenue alignment", highGood: true },
+    { id: "simplicity", label: "Operational simplicity", highGood: true },
+    { id: "burden", label: "Implementation burden", highGood: false },
+    { id: "aiReadiness", label: "AI/usage readiness", highGood: true }
   ],
   testCombinations: [
-    { name: "Guardrail first", selections: { customer_readiness: "low", operating_burden: "heavy" }, expectedPattern: "High trust risk, high complexity, low confidence. Start with research and guardrails." },
-    { name: "Learnable wedge", selections: { customer_readiness: "mixed", operating_burden: "medium" }, expectedPattern: "Balanced tradeoff. Good candidate for fake-door or limited pilot." },
-    { name: "Scale candidate", selections: { customer_readiness: "high", operating_burden: "light" }, expectedPattern: "Stronger trust and confidence. Candidate to package after validation." }
+    { name: "Seat model under manual operations", selections: { monetization_model: "seat_member", system_maturity: "manual_exception" }, expectedPattern: "Familiar and sellable, but exceptions can quietly damage trust and auditability." },
+    { name: "Provisional model with integrated path", selections: { monetization_model: "provisional_true_up", system_maturity: "integrated_path" }, expectedPattern: "Stronger collaboration flexibility and admin trust if approvals, reconciliation, and bill explanation are clear." },
+    { name: "AI entitlement before full control plane", selections: { monetization_model: "ai_agent_entitlement", system_maturity: "rule_entitlement" }, expectedPattern: "Promising adaptability, but usage, permissions, cost-to-serve, and support governance remain unresolved." },
+    { name: "Usage model with control plane", selections: { monetization_model: "usage_consumption", system_maturity: "control_plane" }, expectedPattern: "Best long-term adaptability and auditability, but only worth the implementation burden if internal data shows enough use-case diversity and revenue upside." }
   ]
 };
 
 const FRAMEWORK_GATES = [
-  { gate: "Customer job", mechanism: "TK_FRAMEWORK_JOB_MECHANISM", risk: "TK_FRAMEWORK_JOB_RISK", validate: "TK_FRAMEWORK_JOB_VALIDATE" },
-  { gate: "Trust package", mechanism: "TK_FRAMEWORK_TRUST_MECHANISM", risk: "TK_FRAMEWORK_TRUST_RISK", validate: "TK_FRAMEWORK_TRUST_VALIDATE" },
-  { gate: "Operating model", mechanism: "TK_FRAMEWORK_OPERATING_MECHANISM", risk: "TK_FRAMEWORK_OPERATING_RISK", validate: "TK_FRAMEWORK_OPERATING_VALIDATE" },
-  { gate: "Commercial fit", mechanism: "TK_FRAMEWORK_COMMERCIAL_MECHANISM", risk: "TK_FRAMEWORK_COMMERCIAL_RISK", validate: "TK_FRAMEWORK_COMMERCIAL_VALIDATE" }
+  {
+    gate: "Representable",
+    hypotheses: ["A", "C", "D"],
+    mechanism: "The model can be expressed in quote, contract, entitlement, provisioning, billing, and revenue systems without each system inventing its own translation.",
+    risk: "Commercial creativity turns into exception debt if product, sales, billing, and finance each carry a slightly different version of the truth.",
+    validate: "Trace recent model changes across the full truth path and measure missing definitions, manual mappings, handoff latency, and exception volume."
+  },
+  {
+    gate: "Explainable",
+    hypotheses: ["B", "C"],
+    mechanism: "Customers, admins, sellers, support, and finance can understand what changed, why it changed, and what action is required.",
+    risk: "A technically correct model still fails if the admin cannot connect an access state, approval decision, usage event, or package change to the bill.",
+    validate: "Review admin objections, billing-support tickets, invoice explainers, renewal feedback, and the time it takes support to answer \"why did this change?\""
+  },
+  {
+    gate: "Governable",
+    hypotheses: ["A", "B", "C"],
+    mechanism: "Product, GTM, Finance, Engineering, Support, and Operations have decision rights for model changes, exceptions, approvals, and lifecycle readiness.",
+    risk: "Flexibility becomes shadow policy when every exception needs a bespoke decision or a senior escalation.",
+    validate: "Build an exception taxonomy and test ownership, approval SLAs, override rules, and release readiness for USM, AWM, AI, and usage scenarios."
+  },
+  {
+    gate: "Auditable",
+    hypotheses: ["A", "C", "D"],
+    mechanism: "Finance and revenue teams can trust the data trail from contract terms through billing event, adjustment, revenue treatment, and reporting.",
+    risk: "Revenue leakage, manual adjustments, audit gaps, and reporting disagreement multiply when the system cannot prove what happened.",
+    validate: "Reconcile quote, contract, entitlement, invoice, adjustment, and revenue records for recent model changes; rank where manual finance work appears."
+  },
+  {
+    gate: "Adaptable",
+    hypotheses: ["C", "D"],
+    mechanism: "The model can evolve across AI, usage, AWM, subscriptions, and multi-year agreements without multiplying brittle integrations.",
+    risk: "A broad control-plane idea can be overbuilt if the real issue is one weak handoff; it can be underbuilt if defects span many model types.",
+    validate: "Pressure-test the same model through seat, true-up, AWM, AI, usage, and enterprise scenarios; invest in shared architecture only if defects cluster across boundaries."
+  }
 ];
 
 const VALIDATION_PHASES = [
-  { range: "Days 1-30", title: "Listen and instrument", actions: ["TK_30_DAY_ACTION_1", "TK_30_DAY_ACTION_2", "TK_30_DAY_ACTION_3"], signal: "TK_30_DAY_SIGNAL" },
-  { range: "Days 31-60", title: "Prototype and pressure-test", actions: ["TK_60_DAY_ACTION_1", "TK_60_DAY_ACTION_2", "TK_60_DAY_ACTION_3"], signal: "TK_60_DAY_SIGNAL" },
-  { range: "Days 61-90", title: "Decide what to scale or stop", actions: ["TK_90_DAY_ACTION_1", "TK_90_DAY_ACTION_2", "TK_90_DAY_ACTION_3"], signal: "TK_90_DAY_SIGNAL" }
+  {
+    range: "Days 1-30",
+    title: "Map the truth path",
+    actions: [
+      "Trace three recent or planned monetization changes from quote to contract to entitlement to provisioning to billing to revenue record.",
+      "Build an initial defect and exception taxonomy across representability, explainability, governance, auditability, and adaptability.",
+      "Interview Product, GTM, Finance, Engineering, Support, Sales Ops, and admins to separate perceived pain from measurable failure modes."
+    ],
+    signal: "A ranked map of where monetization truth breaks today: definitions, handoffs, ownership, data quality, admin comprehension, billing explanation, or revenue alignment."
+  },
+  {
+    range: "Days 31-60",
+    title: "Instrument and pressure-test",
+    actions: [
+      "Instrument entitlement, provisioning, billing, admin-approval, and support handoffs for one high-signal scenario such as USM, AWM, AI entitlement, or usage-readiness.",
+      "Pressure-test the five gates against different operating modes: team buyer, enterprise admin, AWM operator, AI adopter, and GTM/Finance stakeholder.",
+      "Identify one customer/admin clarity gap and one internal governance gap that can be improved without requiring a full architecture bet."
+    ],
+    signal: "Evidence on whether the main constraint is one weak handoff, missing ownership, unclear admin experience, insufficient telemetry, or a broader cross-system model-definition gap."
+  },
+  {
+    range: "Days 61-90",
+    title: "Pilot and decide what not to scale",
+    actions: [
+      "Pilot one governance mechanism: release checklist, model-change readiness review, exception owner map, or shared health dashboard.",
+      "Pilot one customer/admin clarity improvement: invoice explanation, approval-state messaging, entitlement visibility, true-up preview, or support-answer standard.",
+      "Decide whether to scale the pilot, stop it, or use the evidence to justify a larger monetization architecture investment."
+    ],
+    signal: "A clear recommendation on the next operating move: improve a handoff, formalize governance, invest in shared model definitions, or defer structural change until stronger evidence exists."
+  }
 ];
 
 const OPEN_QUESTION_GROUPS = [
-  { group: "Data I cannot see externally", questions: ["TK_DATA_QUESTION_1", "TK_DATA_QUESTION_2", "TK_DATA_QUESTION_3", "TK_DATA_QUESTION_4"] },
-  { group: "Product strategy", questions: ["TK_STRATEGY_QUESTION_1", "TK_STRATEGY_QUESTION_2", "TK_STRATEGY_QUESTION_3", "TK_STRATEGY_QUESTION_4"] },
-  { group: "Operating model", questions: ["TK_OPERATING_QUESTION_1", "TK_OPERATING_QUESTION_2", "TK_OPERATING_QUESTION_3", "TK_OPERATING_QUESTION_4"] }
+  {
+    group: "Data I cannot see externally",
+    questions: [
+      "Where do entitlement, provisioning, billing, and revenue-record mismatches actually concentrate by plan, customer segment, sales motion, and monetization model?",
+      "What are the current quote-to-provision and provision-to-bill latency distributions, and which handoffs create the most rework or customer-facing delay?",
+      "Which admin objections and support-ticket categories correlate most strongly with renewal friction, billing disputes, credits, downgrades, or expansion drag?",
+      "Where does revenue leakage or manual adjustment volume originate: quote configuration, contract terms, entitlement mapping, usage/billing events, true-up logic, or finance reconciliation?"
+    ]
+  },
+  {
+    group: "Product and monetization strategy",
+    questions: [
+      "Which model changes matter most in the next 12 to 18 months: USM refinement, Advanced Work Management packaging, AI entitlements, usage/consumption, multi-year enterprise agreements, or something less visible externally?",
+      "Which capabilities should behave as package entitlements, governed enterprise features, usage-triggered value, or customer-admin controlled options?",
+      "For AI and Smart Agents, which decision signal matters most right now: adoption, workflow completion, admin control, cost-to-serve, gross margin, customer outcome, or sales differentiation?",
+      "Which buyer/admin operating modes are least tolerant of monetization complexity, and where is flexibility worth the extra system burden?"
+    ]
+  },
+  {
+    group: "Systems and operating model",
+    questions: [
+      "Who owns the shared definitions for user state, package, entitlement, provisioning event, billable event, adjustment, and revenue treatment?",
+      "Which system boundary creates the highest-cost defects today: Salesforce to contract, contract to entitlement, entitlement to provisioning, provisioning to billing, billing to revenue, or support back to product?",
+      "What governance exists before a monetization change launches, and which teams have the decision rights to block, scope, or defer a model that is not representable, explainable, governable, auditable, or adaptable?",
+      "What system-health metrics should leadership review regularly so monetization issues are visible before they become renewal friction, finance cleanup, support escalation, or customer trust problems?"
+    ]
+  }
 ];
 
 const CAREER_ARCS = [
-  { era: "Amazon Prime", company: "Prime Worldwide Engagement", role: "Senior Manager, Product", relevance: "Lifecycle, activation, benefit discovery, and CLV systems.", wins: ["Built and led a PM team from 1 to 5 Senior PMTs.", "Owned a platform connecting benefit recommendation engines and surfaces across 26 countries.", "Work associated with renewal, shopping activity, utilization, and impression-scale outcomes."], tieIn: "Use this arc when the target role needs lifecycle systems, engagement platforms, or customer-value activation." },
-  { era: "T-Mobile", company: "Billing and Benefits / T-Mobile ONE", role: "Senior Product Leader", relevance: "Customer trust, packaging clarity, bill comprehension, and enterprise alignment.", wins: ["Led product workstream for T-Mobile ONE pricing and packaging simplification.", "Rebuilt billing as a product experience around comprehension, payment completion, and care-call reduction.", "Worked across legal, accounting, finance, care, retail, customer delivery, and billing."], tieIn: "Use this arc when the target role needs monetization clarity, operational trust, or cross-functional product leadership." },
-  { era: "T-Mobile", company: "JUMP and Device Programs", role: "Product Owner", relevance: "Add-on packaging, attachment, vendor economics, insurance, and mobile security.", wins: ["Owned JUMP attachment and partner-facing program outcomes.", "Owned technical integration change between Asurion and Assurant.", "Managed Lookout relationship and mobile security value packaging."], tieIn: "Use this arc when the target role needs partner economics, add-on monetization, or customer-facing value clarity." }
+  {
+    era: "T-Mobile",
+    company: "Billing & Benefits",
+    role: "Senior Manager, Customer Engagement Product Management",
+    relevance: "Billing trust, customer comprehension, payment completion, care-call reduction, CLV, and bill-as-product leadership.",
+    wins: [
+      "Led Billing & Benefits transformation across web, app, and paper bill, reframing the bill from technical accuracy artifact into customer comprehension, self-service, and trust product.",
+      "Made Billing & Benefits T-Mobile's #1 digital property by unique MAU/views and reduced billing-related calls to care 43%.",
+      "Delivered +23% CLV in the first 12 months, +204% YoY one-time payment completion, and +76% recurring payment setup."
+    ],
+    tieIn: "Use this arc when Smartsheet needs monetization systems that are not only technically correct, but explainable to admins, customers, support, and finance."
+  },
+  {
+    era: "T-Mobile",
+    company: "T-Mobile ONE",
+    role: "Senior Product Manager, Postpaid Subscription Product",
+    relevance: "Pricing and packaging simplification translated across legal, accounting, finance, customer delivery, retail, care, billing, and marketing.",
+    wins: [
+      "Led product workstream for T-Mobile ONE pricing and package simplification, moving customers toward tax-inclusive, unlimited, upgrade-friendly subscription packaging.",
+      "Aligned legal, accounting, finance, customer delivery, retail, care, billing, and marketing around a simpler customer promise while preserving back-office accuracy and operational feasibility.",
+      "Built differentiated value propositions and bundles including Netflix, international roaming, inflight Wi-Fi, and JUMP!."
+    ],
+    tieIn: "Use this arc when Smartsheet needs a Product Manager who can translate pricing and packaging strategy into enterprise-operable system requirements."
+  },
+  {
+    era: "Amazon Prime",
+    company: "Prime Lifecycle / CLV",
+    role: "Senior Manager, Prime Worldwide Engagement",
+    relevance: "Lifecycle activation, benefit discovery, personalization, measurement cadence, PM enablement, and CLV instrumentation.",
+    wins: [
+      "Owned global lifecycle engagement platform connecting recommendation engines across Prime Video, Music, Reading, Gaming, and other benefit teams.",
+      "Built self-service targeting and experiment front end for PMs in 26 countries, reducing bespoke engineering for local journeys and templated digital experiences.",
+      "Established operating cadence and metrics tied to 30/60/90-day activation, retention, shopping behavior, and CLV; work was associated with +23% renewals, +17% shopping activity, 30M+ monthly benefit utilizations, and more than 1B impressions."
+    ],
+    tieIn: "Use this arc when Smartsheet needs to understand whether new value, including AI or advanced capabilities, is being discovered, activated, and measured in a way that supports retention and expansion."
+  }
 ];
 
 function applyDesignTokens(tokens) {
@@ -543,7 +768,8 @@ function getOption(axis, id) {
 }
 
 function computeDiagnosticOutcome(model, selections) {
-  const base = { trust: 52, revenue: 48, complexity: 48, confidence: 46 };
+  const base = Object.fromEntries(model.outcomeMetrics.map((metric) => [metric.id, 50]));
+  if (base.burden !== undefined) base.burden = 45;
   model.axes.forEach((axis) => {
     const option = getOption(axis, selections[axis.id]);
     Object.entries(option.scores).forEach(([metric, delta]) => {
@@ -551,18 +777,18 @@ function computeDiagnosticOutcome(model, selections) {
     });
   });
 
-  const readyToScale = base.trust >= 60 && base.confidence >= 58 && base.complexity <= 55;
-  const learnable = base.confidence >= 45 && base.complexity <= 70;
+  const readyToScale = base.trust >= 60 && base.adaptability >= 58 && base.audit >= 58 && base.burden <= 62;
+  const learnable = base.trust >= 45 && base.audit >= 42 && base.burden <= 76;
   const verdict = readyToScale
     ? "Package after validation"
     : learnable
       ? "Run a contained learning loop"
       : "Do not scale yet";
   const explanation = readyToScale
-    ? "The pattern looks promising, but the memo posture still requires validation before commitment."
+    ? "The selected model has enough trust, auditability, and adaptability to justify deeper validation before a roadmap commitment."
     : learnable
-      ? "The pattern is useful enough to test, but the operating burden or trust work still matters."
-      : "The signal says to reduce risk before building a polished customer-facing answer.";
+      ? "The pattern is useful enough to test, but the team should reduce the highest-risk handoff before scaling it."
+      : "The signal says to simplify the model, improve the system maturity, or reduce risk before building a polished customer-facing answer.";
 
   return { metrics: base, verdict, explanation };
 }
@@ -645,11 +871,11 @@ const Hero = () => (
           Smartsheet's next monetization constraint may be making every new model reliable from quote to entitlement to billing, not simply inventing new packages.
         </h1>
         <div className="space-y-5 text-lg leading-relaxed muted max-w-3xl">
-          <p>I am a senior product leader with 18+ years across subscription lifecycle, billing trust, and monetization systems at T-Mobile and Amazon Prime. The closest mirror for this role is the sequence from T-Mobile ONE to Billing &amp; Benefits: simplifying the customer promise, then making legal, accounting, finance, care, retail, billing, and the customer-facing bill carry the same truth.</p>
+          <p>I bring 18+ years across subscription lifecycle, billing trust, and monetization systems at T-Mobile and Amazon Prime. The most relevant pattern is T-Mobile ONE into Billing &amp; Benefits: simplify the promise customers hear, then make legal, accounting, finance, care, retail, billing, and the bill itself reflect the same promise.</p>
           <p>{BRIEF_META.memoPosture}</p>
           <div className="soft-card p-5">
             <Eyebrow className="mb-3">If you only read three lines</Eyebrow>
-            <p className="leading-relaxed">Smartsheet is moving from work management scale into more complex monetization: AI features, advanced packages, provisional access, admin approval, and future usage or consumption models. The leak to watch is not pricing creativity; it is whether quote, entitlement, provisioning, billing, support, reporting, and revenue alignment stay synchronized as models change. The whitespace is a monetization architecture discipline that lets Product, GTM, Finance, and customers move faster without turning every new model into an exception path.</p>
+            <p className="leading-relaxed">Smartsheet is moving from work management scale into more complex monetization: AI features, advanced packages, provisional access, admin approval, and future usage or consumption models. The risk to watch is not a lack of pricing ideas; it is whether quote, entitlement, provisioning, billing, support, reporting, and revenue alignment stay synchronized as models change. The practical opportunity is a monetization architecture discipline that lets Product, GTM, Finance, and customers move faster without turning every new model into an exception path.</p>
           </div>
         </div>
       </div>
@@ -819,6 +1045,18 @@ const DiagnosticInteractive = () => {
         <p className="text-sm leading-relaxed muted">{INTERACTIVE_MODEL.caveat}</p>
       </div>
 
+      <div className="flat-card p-5 mb-8">
+        <Eyebrow className="mb-4">Quote-to-revenue path this tests</Eyebrow>
+        <div className="flex flex-wrap items-center gap-2">
+          {INTERACTIVE_MODEL.flow.map((step, index) => (
+            <React.Fragment key={step}>
+              <span className="mono text-xs px-3 py-2 rounded" style={{ background: "var(--color-surface-soft)", color: "var(--color-text)" }}>{step}</span>
+              {index < INTERACTIVE_MODEL.flow.length - 1 && <span className="mono text-xs subtle">to</span>}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
       <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8">
         <div className="space-y-5">
           {INTERACTIVE_MODEL.axes.map((axis) => (
@@ -871,11 +1109,22 @@ const DiagnosticInteractive = () => {
 
 const FrameworkSection = () => (
   <SectionShell id="10">
-    <SectionHeader id="10" label="Framework I Would Validate" title="TK_FRAMEWORK_SECTION_TITLE" lead="This is an illustrative framework, not a final recommendation. It should be calibrated with internal data before it becomes a roadmap, package, price, or org decision." />
+    <SectionHeader id="10" label="Framework I Would Validate" title="Five gates I would validate before scaling a new monetization model." lead="This is not a pricing recommendation. It is a release-readiness test for whether a model can survive quote, contract, entitlement, provisioning, billing, support, and revenue alignment." />
+    <div className="soft-card p-5 mb-8">
+      <Eyebrow className="mb-2">Read this as validation, not proposal</Eyebrow>
+      <p className="text-sm muted leading-relaxed">The gates below do not decide whether Smartsheet should ship usage pricing, an AI entitlement, a new AWM package, or a control plane. They decide what evidence would make any of those moves safer.</p>
+    </div>
     <div className="grid md:grid-cols-2 gap-4">
       {FRAMEWORK_GATES.map((gate) => (
         <Card key={gate.gate}>
-          <Eyebrow className="mb-4">{gate.gate}</Eyebrow>
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <Eyebrow>{gate.gate}</Eyebrow>
+            <div className="flex flex-wrap justify-end gap-1">
+              {gate.hypotheses.map((tag) => (
+                <span key={tag} className="mono text-[10px] px-2 py-1 rounded" style={{ background: "var(--color-accent-soft)", color: "var(--color-accent-strong)" }}>H{tag}</span>
+              ))}
+            </div>
+          </div>
           <div className="space-y-4 text-sm leading-relaxed muted">
             <div><div className="font-semibold" style={{ color: "var(--color-text)" }}>Mechanism</div><p>{gate.mechanism}</p></div>
             <div><div className="font-semibold" style={{ color: "var(--color-text)" }}>Risk</div><p>{gate.risk}</p></div>
@@ -889,7 +1138,7 @@ const FrameworkSection = () => (
 
 const ValidationPlan = () => (
   <SectionShell id="11">
-    <SectionHeader id="11" label="Validation Plan" title="TK_VALIDATION_SECTION_TITLE" lead="The plan is about learning responsibly, not pretending outside-in research is enough to make the decision." />
+    <SectionHeader id="11" label="Validation Plan" title="The first 90 days should make the monetization truth path visible before scaling a new model." lead="The plan is about learning responsibly: map where the current system agrees, find where it does not, then pilot one governance mechanism and one customer/admin clarity improvement before making structural bets." />
     <div className="grid md:grid-cols-3 gap-4 mb-8">
       {VALIDATION_PHASES.map((phase) => (
         <Card key={phase.range}>
@@ -907,14 +1156,14 @@ const ValidationPlan = () => (
     </div>
     <div className="soft-card p-5">
       <Eyebrow className="mb-2">What I would not do</Eyebrow>
-      <p className="text-sm muted leading-relaxed">TK_VALIDATION_NOT_DO. This keeps the memo humble on prescription and high-confidence only where the evidence supports it.</p>
+      <p className="text-sm muted leading-relaxed">I would not start with a price-point recommendation, re-platforming bet, or AI consumption model before the system truth path is visible. Those may become the right moves later, but the first responsible step is to learn where the current monetization model fails to represent, explain, govern, audit, or adapt.</p>
     </div>
   </SectionShell>
 );
 
 const OpenQuestions = () => (
   <SectionShell id="12">
-    <SectionHeader id="12" label="Open Questions" title="TK_OPEN_QUESTIONS_SECTION_TITLE" lead="These questions should not be answerable from public sources or already answered elsewhere in the brief. They are the internal signals that would change the read." />
+    <SectionHeader id="12" label="Open Questions" title="The questions that would change the read." lead="Public research can identify the pressure points. The internal conversation should decide where the pressure is real, where it is already managed, and which signal is strong enough to shape the roadmap." />
     <div className="grid md:grid-cols-3 gap-4">
       {OPEN_QUESTION_GROUPS.map((group) => (
         <Card key={group.group}>
@@ -930,7 +1179,7 @@ const OpenQuestions = () => (
 
 const KelvinBridge = () => (
   <SectionShell id="13">
-    <SectionHeader id="13" label="Why This Profile" title="TK_PROFILE_SECTION_TITLE" lead="This section should map resume-backed experience to the role's transition while being explicit about what Kelvin would not claim." />
+    <SectionHeader id="13" label="Why This Profile" title="The fit is not a pure pricing PM profile. It is subscription trust, monetization translation, and systems product judgment." lead="The strongest bridge to this role is the sequence from T-Mobile ONE to Billing & Benefits: simplify the customer promise, then make the downstream systems, bill, support model, and finance record carry the same truth. Prime adds the lifecycle and measurement layer: value has to be discovered, activated, measured, and governed." />
     <div className="grid md:grid-cols-3 gap-4 mb-10">
       {CAREER_ARCS.map((arc) => (
         <Card key={arc.company}>
@@ -948,14 +1197,14 @@ const KelvinBridge = () => (
     <div className="grid md:grid-cols-2 gap-8">
       <FlatCard>
         <Eyebrow className="mb-4">Current period</Eyebrow>
-        <h3 className="serif text-2xl mb-4">TK_CAREER_BREAK_TITLE</h3>
-        <p className="muted leading-relaxed mb-4">TK_CAREER_BREAK_FRAMING</p>
-        <p className="muted leading-relaxed">TK_AI_TOOLING_FRAMING</p>
+        <h3 className="serif text-2xl mb-4">Deliberate reset, hands-on AI workflow practice, and return to product leadership.</h3>
+        <p className="muted leading-relaxed mb-4">Since Amazon, I stepped away from full-time work for a family health chapter that is now stable. I have used the time deliberately: rebuilding my product narrative, pressure-testing my work stories, and building hands-on fluency with Claude Code, Codex, and ChatGPT through real workflow and product-strategy problems.</p>
+        <p className="muted leading-relaxed">I would not frame that as a substitute for operating inside a company. It is not. I would frame it as evidence of how I work when the problem is ambiguous: create structure, build feedback loops, sharpen the artifact, and make the next iteration better than the last one.</p>
       </FlatCard>
       <FlatCard>
         <Eyebrow className="mb-4">What I would not claim</Eyebrow>
-        <p className="muted leading-relaxed mb-4">TK_PROFILE_NOT_CLAIM_1</p>
-        <p className="muted leading-relaxed">TK_PROFILE_REDIRECT_TO_BET</p>
+        <p className="muted leading-relaxed mb-4">I would not claim to be a former Smartsheet systems PM, to know Smartsheet's internal entitlement architecture, or to have the final answer on AI monetization economics from outside the company.</p>
+        <p className="muted leading-relaxed">What I would claim is narrower and stronger: I have repeatedly worked where subscription promises, customer trust, internal systems, billing, finance, support, and lifecycle value had to line up. That is the operating problem this role appears to own.</p>
       </FlatCard>
     </div>
   </SectionShell>
@@ -978,7 +1227,7 @@ const Footer = () => (
         </div>
         <div>
           <Eyebrow className="mb-3">Sources and method</Eyebrow>
-          <p className="text-xs muted leading-relaxed">TK_SOURCE_METHOD. Public facts should be rechecked before final submission. Kelvin career facts must map to the resume, story bank, user fact ledger, or explicit user confirmation.</p>
+          <p className="text-xs muted leading-relaxed">Built from public Smartsheet sources, the posted role description, and Kelvin's resume-backed experience. Outside-in hypotheses are labeled as hypotheses; internal architecture, defect data, usage economics, and ownership boundaries should be validated in conversation.</p>
         </div>
       </div>
       <div className="mono text-[11px] subtle tracking-wide pt-8 mt-8 border-t flex flex-col sm:flex-row gap-2 sm:justify-between" style={{ borderColor: "var(--color-border)" }}>
